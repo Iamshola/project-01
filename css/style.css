@@ -19,10 +19,10 @@ header {
 }
 
 .game {
-  width: 700px;
-  height: 700px;
+  width: 900px;
+  height: 900px;
   margin: auto;
-  padding: 40px;
+  padding: 20px;
 }
 
 .grid {
@@ -55,9 +55,9 @@ header {
   background-color: pink;
 }
 
-
-
 .obstacles {
-  background-color: black;
+  background-color: orange;
+
+
 
 }
