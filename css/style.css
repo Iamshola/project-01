@@ -1,4 +1,63 @@
-body{
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+* {
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  margin: 0;
+  font-size: 24px;
+
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  /* border-bottom: 2px solid; */
+  padding: 10px 0;
+}
+
+.game {
+  width: 700px;
+  height: 700px;
+  margin: auto;
+  padding: 40px;
+}
+
+.grid {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  border: 0.5px solid;
+
+}
+
+.grid div {
+  width: calc(100% / 6);
+  height: calc(100% / 6);
+  /* background-color: red; */
+}
+
+.mole {
+  background-image: url(https://gallery.kissclipart.com/20180906/psw/kissclipart-whack-a-mole-clip-art-clipart-whac-a-mole-clip-art-c1444edc7b73ee01.jpg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.home{
   background-color: grey;
-  font-size: 30px;
+}
+
+.safe{
+  background-color: pink;
+}
+
+
+
+.obstacles {
+  background-color: black;
+
 }
