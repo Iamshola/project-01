@@ -4,14 +4,25 @@
   <meta charset="utf-8">
   <title>Frogger</title>
   <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
   <script src="js/app.js" charset="utf-8"></script>
+  <script src="https://kit.fontawesome.com/419c3e318b.js"></script>
  </head>
  <body>
+   <div class="everything">
+   <div class="scoreBoard">
+    <div class="score"></div>
+    <div class="lives"> Lives <br>
+      <i class="fas fa-heart"></i>
+      <i class="fas fa-heart"></i>
+      <i class="fas fa-heart"></i>
+      <i class="fas fa-heart"></i>
+      <i class="fas fa-heart"></i>
+    </div>
+    <button onClick="startGame()">Start</button>
+    <button onClick="restartGame()">Restart</button>
+  </div>
   <div class="game">
-   <header>
-    <div class="score">0</div>
-    <div class="timer">60</div>
-   </header>
    <div class="grid">
     <div class="home">0</div>
     <div class="home">1</div>
@@ -19,30 +30,30 @@
     <div class="home">3</div>
     <div class="home">4</div>
     <div class="home">5</div>
-    <div class= >6</div>
-    <div class="danger">7</div>
-    <div class="danger">8</div>
-    <div class="danger">9</div>
-    <div class="danger">10</div>
-    <div class="danger">11</div>
-    <div>12</div>
-    <div>13</div>
-    <div>14</div>
-    <div>15</div>
-    <div>16</div>
-    <div>17</div>
+    <div class="riskArea">6</div>
+    <div class="riskArea">7</div>
+    <div class="riskArea">8</div>
+    <div class="riskArea">9</div>
+    <div class="riskArea">10</div>
+    <div class="riskArear">11</div>
+    <div class="riskArea">12</div>
+    <div class="riskArea">13</div>
+    <div class="riskArea">14</div>
+    <div class="riskArea">15</div>
+    <div class="riskArea">16</div>
+    <div class="riskArea">17</div>
     <div class="safe">18</div>
     <div class="safe" >19</div>
     <div class="safe">20</div>
     <div class="safe">21</div>
     <div class="safe">22</div>
     <div class="safe">23</div>
-    <div>24</div>
-    <div>25</div>
-    <div>26</div>
-    <div>27</div>
-    <div>28</div>
-    <div>29</div>
+    <div class="riskArea">24</div>
+    <div class="riskArea">25</div>
+    <div class="riskArea">26</div>
+    <div class="riskArea">27</div>
+    <div class="riskArea">28</div>
+    <div class="riskArea">29</div>
     <div class="mole safe">30</div>
     <div class="safe">31</div>
     <div class="safe">32</div>
@@ -50,6 +61,7 @@
     <div class="safe">34</div>
     <div class="safe">35</div>
    </div>
+  </div>
   </div>
  </body>
 </html>
