@@ -6,8 +6,15 @@
 body {
   margin: 0;
   font-size: 24px;
-  background-color: #E2ECEF;
+  background-color: #FFF3F5;
   font-family: 'Roboto Condensed', sans-serif;
+  text-align: center;
+
+
+}
+h1 {
+text-align: center;
+color: #C0C0C0;
 
 }
 
@@ -22,13 +29,17 @@ button{
   width: 100px;
   height: 40px;
   margin-left: 20px;
+  margin-top: 60px;
+  font-size: 20px;
 }
 
 .game {
-  width: 1100px;
-  height: 1100px;
+  width: 1050px;
+  height: 1050px;
   margin-left: 20px;
   padding: 10px;
+  border: 0.5px solid black;
+
 }
 
 .grid {
@@ -41,7 +52,6 @@ button{
 .grid div {
   width: calc(100% / 6);
   height: calc(100% / 6);
-  /* background-color: red; */
 }
 .everything{
   display: flex;
@@ -57,32 +67,62 @@ div i{
 
 
 .scoreBoard{
-  /* display: inline-flex; */
+  background-image: url(../img/blackBoard.jpg);
+  background-repeat: no-repeat;
   width: 400px;
   height: 600px;
-  background-color: #fafafa;
+  background-color: #9C9696;
   padding-top: 20px;
   margin: 230px 30px;
+  color: white;
+  font-family: 'Nanum Pen Script', cursive;
+  border-radius: 20px;
 }
 .mole {
-  background-image: url(https://gallery.kissclipart.com/20180906/psw/kissclipart-whack-a-mole-clip-art-clipart-whac-a-mole-clip-art-c1444edc7b73ee01.jpg);
+  background-image: url(../img/littleGirl.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }
 
+
 .home{
-  background-color: grey;
+  background-image: url(../img/plate.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+}
+
+.homeWithGem{
+  background-image: url(../img/plate-radish.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .safe{
-  background-color: pink;
+  background-color: turquoise;
 }
 
 .obstacles {
-  background-color: orange;
+  background-image: url(../img/lollipop.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 
 }
  .gem{
-   background-color: blue;
+   background-image: url(../img/radish.png);
+   background-size: contain;
+   background-repeat: no-repeat;
+   background-position: center;
+ }
+
+
+ .gemwithveg{
+   background-image: url(../img/littleGirl-copy.png);
+   background-size: contain;
+   background-repeat: no-repeat;
+   background-position: center;
  }
