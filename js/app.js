@@ -3,17 +3,20 @@ document.addEventListener('DOMContentLoaded', () => {
   const obstacles = document.querySelector('.obstacles')
   const riskArea = document.querySelectorAll('.riskArea')
   const home = document.querySelectorAll('home')
-  const score = document.querySelector('score')
+  const scoreBoard = document.querySelector('.scoreBoard')
+  let score = 0
 
   let mole = 'mole'
+  // let home = 'home'
   let gemIndex = 1
   let randomIndex = 6
   let collisionCheck = 1
   let collisionCheckRow2 = 1
   let collisionCheckRow3 = 1
   let molePoistion = 30
+  let newMolePoistion = 31
   let currentIndex = 30
-  let homeIndex = 1
+  const homeIndex = 1
   const width = 6
   let logIndex = 6
   let currentIndexRow2 = 12
@@ -24,7 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // log index = any poistion on row 1 of obstacles
   // log currentIndexRow2/goobstaclesTwo = any poistion on row 2 of obstacles
   // log currentIndexRow3/goobstaclesThree = any poistion on row 3 of obstacles
-
 
 
 
@@ -131,22 +133,42 @@ document.addEventListener('DOMContentLoaded', () => {
   function moleOnPlate(){
     if(squares[currentIndex].classList.contains('home')) {
       squares[currentIndex].classList.remove('home')
+      squares[currentIndex].classList.remove('gemwithveg')
       squares[currentIndex].classList.add('homeWithGem')
-      console.log('there')
-    }
-    moleNewPoistion()
+      if(home === 'homeWithGem'){
+        squares[currentIndex].classList.remove('gemwithveg')
+      }
+      moleNewPoistion()
+      getGoals()
+      currentIndex = 32
+      mole = 'mole'
+      return squares[currentIndex].classList.add('mole')
 
+    }
   }
+
+  // gneerate a new mole position
+  // add the class of mole to that square
+  // newMolePoistion = squares[currentIndex].classList.add('mole')
+
+  // return squares[20].classList.add('mole')
+
 
   function moleNewPoistion(){
-
-
-
-
-
-
+    newMolePoistion = squares[currentIndex].classList.add('mole')
+    return newMolePoistion
 
   }
+
+  function endGame (){
+    if(homeWithGem === 6){
+      console.log('yass')
+    }
+
+  }
+
+
+
 
   // Need these Braces
 })
