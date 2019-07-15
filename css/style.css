@@ -1,8 +1,12 @@
 * {
   box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
+
 }
 
+i {
+  font-family: 'Nanum Pen Script', cursive;
+
+}
 body {
   margin: 0;
   font-size: 24px;
@@ -12,16 +16,19 @@ body {
 
 
 }
-h1 {
+h1 h4 p {
 text-align: center;
-color: #C0C0C0;
+color: 	#C5B358;
+font-family: 'Roboto Condensed', sans-serif;
+}
 
+h2{
+  font-size: 40px;
 }
 
 header {
   display: flex;
   justify-content: space-between;
-  /* border-bottom: 2px solid; */
   padding: 10px 0;
 }
 
@@ -31,6 +38,18 @@ button{
   margin-left: 20px;
   margin-top: 60px;
   font-size: 20px;
+}
+.scoreBoard{
+  background-image: url(../img/blackBoard.jpg);
+  background-repeat: no-repeat;
+  width: 400px;
+  height: 600px;
+  background-color: #9C9696;
+  padding: 15px;
+  margin: 230px 30px;
+  color: white;
+  font-family: 'Nanum Pen Script', cursive;
+  border-radius: 20px;
 }
 
 .game {
@@ -58,26 +77,16 @@ button{
   margin: 10px;
 }
 div i{
-  margin: 10px;
+  margin: 5px;
   text-align: center;
 }
+
 .lives{
   margin: 10px;
+
 }
 
 
-.scoreBoard{
-  background-image: url(../img/blackBoard.jpg);
-  background-repeat: no-repeat;
-  width: 400px;
-  height: 600px;
-  background-color: #9C9696;
-  padding-top: 20px;
-  margin: 230px 30px;
-  color: white;
-  font-family: 'Nanum Pen Script', cursive;
-  border-radius: 20px;
-}
 .mole {
   background-image: url(../img/littleGirl.png);
   background-size: contain;

@@ -4,18 +4,21 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Frogger</title>
+  <script src="https://kit.fontawesome.com/419c3e318b.js"></script>
   <link rel="stylesheet" href="css/style.css">
   <link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
   <script src="js/app.js" charset="utf-8"></script>
-  <script src="https://kit.fontawesome.com/419c3e318b.js"></script>
  </head>
  <body>
    <h1>Sarah's Salad Bar</h1>
    <div class="everything">
     <div class="scoreBoard">
-      <p> Instructions <br> </p>
+      <h2> Instructions <br> </h2>
       <p>Let's help Sarah collect all the ingredients required for her salad and avoid all junk food on her way!</p>
+      <p> To move Sarah around the board use <i class="fas fa-arrows-alt"></i> </p>
+      <p>Good Luck and help Sarah out!</p>
+      <p> You have collected <span class="collected">0</span> out of 6</p>
     </div>
     <div class="game">
      <div class="grid">
@@ -59,12 +62,12 @@
     </div>
     <div class="scoreBoard">
      <div class="score"></div>
-     <div class="lives"> Lives <br>
-       <i class="fas fa-heart"> Obesity</i> <br>
-       <i class="fas fa-heart">Heart Attack</i> <br>
-       <i class="fas fa-heart">Type 2 diabetes</i> <br>
-       <i class="fas fa-heart">Bad teeth </i> <br>
-       <i class="fas fa-heart"></i>
+     <div class="lives"> <br>
+       <h2>Lives </h2>
+       <i class="fas fa-heart">Obesity</i> <br>
+       <i class="fas fa-heart">Obesity</i> <br>
+       <i class="fas fa-heart">Obesity</i> <br>
+       <i class="fas fa-heart">Obesity</i> <br>
      </div>
      <button onClick="startGame()">Start</button>
      <button onClick="restartGame()">Restart</button>

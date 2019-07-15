@@ -4,11 +4,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const riskArea = document.querySelectorAll('.riskArea')
   const home = document.querySelectorAll('home')
   const scoreBoard = document.querySelector('.scoreBoard')
+  const collected = document.querySelector('.collected')
   let score = 0
 
   let mole = 'mole'
   // let home = 'home'
+  // let gemwithveg
   let gemIndex = 1
+  let vegCollected = 0
   let randomIndex = 6
   let collisionCheck = 1
   let collisionCheckRow2 = 1
@@ -16,19 +19,17 @@ document.addEventListener('DOMContentLoaded', () => {
   let molePoistion = 30
   let newMolePoistion = 31
   let currentIndex = 30
-  const homeIndex = 1
+  // const homeIndex = 1
   const width = 6
-  let logIndex = 6
-  let currentIndexRow2 = 12
-  let currentIndexRow3 = 24
+  let logIndex = 5
+  let currentIndexRow2 = 11
+  let currentIndexRow3 = 23
 
   // notes
   // currentIndex = any position on the grid
   // log index = any poistion on row 1 of obstacles
   // log currentIndexRow2/goobstaclesTwo = any poistion on row 2 of obstacles
   // log currentIndexRow3/goobstaclesThree = any poistion on row 3 of obstacles
-
-
 
   // Move moveMyCharacter starts
   function moveMyCharacter(e) {
@@ -60,45 +61,56 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // goObstaclesLogs starts
   function goObstaclesLogs(){
-    if(logIndex === 12){
-      logIndex = 6
-    } else if (logIndex >= 6){
+    if(logIndex < 12 && logIndex > 5){
       squares[logIndex].classList.add('obstacles')
+      squares[logIndex].classList.remove('obstacles')
+      logIndex += 1
       collisionCheck = logIndex
-      logIndex++
-      setTimeout(() => squares[logIndex-1].classList.remove('obstacles'), 750)
+      squares[logIndex].classList.add('obstacles')
+    } else {
+      squares[logIndex].classList.remove('obstacles')
+      logIndex = 6
+      squares[logIndex].classList.add('obstacles')
     }
   }
-  setInterval(goObstaclesLogs, 1000)
-  // goObstaclesLogs ends
+  setInterval(goObstaclesLogs, 500)
+
 
   //goObstaclesLog2 starts
   function goObstaclesTwo(){
-    if(currentIndexRow2 === 18){
-      currentIndexRow2 = 12
-    } else if (currentIndexRow2 >= 12){
+    if(currentIndexRow2 < 17 && currentIndexRow2 > 11){
       squares[currentIndexRow2].classList.add('obstacles')
+      squares[currentIndexRow2].classList.remove('obstacles')
+      currentIndexRow2 += 1
       collisionCheckRow2 = currentIndexRow2
-      currentIndexRow2++
-      setTimeout(() => squares[currentIndexRow2-1].classList.remove('obstacles'), 750)
+      squares[currentIndexRow2].classList.add('obstacles')
+    } else {
+      squares[currentIndexRow2].classList.remove('obstacles')
+      currentIndexRow2 = 12
+      squares[currentIndexRow2].classList.add('obstacles')
+      // setTimeout(() => squares[currentIndexRow3-1].classList.remove('obstacles'), 750)
     }
   }
-  setInterval(goObstaclesTwo, 1000)
+  setInterval(goObstaclesTwo, 500)
   //goObstaclesLog2 ends
 
   //goObstaclesThree starts
   function goObstaclesThree(){
-    if(currentIndexRow3 === 30){
-      currentIndexRow3 = 24
-    } else if (currentIndexRow3 >= 24){
+    if(currentIndexRow3 < 29 && currentIndexRow3 > 23){
       squares[currentIndexRow3].classList.add('obstacles')
+      squares[currentIndexRow3].classList.remove('obstacles')
+      currentIndexRow3 += 1
       collisionCheckRow3 = currentIndexRow3
-      currentIndexRow3++
-      setTimeout(() => squares[currentIndexRow3-1].classList.remove('obstacles'), 750)
+      squares[currentIndexRow3].classList.add('obstacles')
+    } else {
+      squares[currentIndexRow3].classList.remove('obstacles')
+      currentIndexRow3 = 24
+      squares[currentIndexRow3].classList.add('obstacles')
+      // setTimeout(() => squares[currentIndexRow3-1].classList.remove('obstacles'), 750)
     }
   }
-  setInterval(goObstaclesThree, 1000)
-  //goObstaclesTwo ends
+  setInterval(goObstaclesThree, 500)
+  //goObstaclesThree ends
 
   // MakeGoals starts
   function getGoals(){
@@ -106,9 +118,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const randomriskArea = riskArea[randomIndex]
     gemIndex = +(randomriskArea.innerHTML)
     riskArea[randomIndex].classList.add('gem')
-    if(squares[currentIndex].classList.contains('gem')) {
-      // squares[currentIndex].classList.remove(mole)
-    }
   }
   getGoals()
 
@@ -131,10 +140,12 @@ document.addEventListener('DOMContentLoaded', () => {
   setInterval(collision, 250)
 
   function moleOnPlate(){
-    if(squares[currentIndex].classList.contains('home')) {
+    if(squares[currentIndex].classList.contains('home') && squares[currentIndex].classList.contains('gemwithveg')) {
       squares[currentIndex].classList.remove('home')
+      squares[currentIndex].classList.remove('gem')
       squares[currentIndex].classList.remove('gemwithveg')
       squares[currentIndex].classList.add('homeWithGem')
+      gameCompleted()
       if(home === 'homeWithGem'){
         squares[currentIndex].classList.remove('gemwithveg')
       }
@@ -142,33 +153,27 @@ document.addEventListener('DOMContentLoaded', () => {
       getGoals()
       currentIndex = 32
       mole = 'mole'
+      squares[currentIndex].classList.remove('gem')
       return squares[currentIndex].classList.add('mole')
-
+    } else if (squares[currentIndex].classList.contains('home') && !squares[currentIndex].classList.contains('gemwithveg')) {
+      currentIndex = 35
+      squares[currentIndex].classList.add('mole')
     }
   }
-
-  // gneerate a new mole position
-  // add the class of mole to that square
-  // newMolePoistion = squares[currentIndex].classList.add('mole')
-
-  // return squares[20].classList.add('mole')
-
 
   function moleNewPoistion(){
     newMolePoistion = squares[currentIndex].classList.add('mole')
     return newMolePoistion
-
   }
 
-  function endGame (){
-    if(homeWithGem === 6){
-      console.log('yass')
+  function gameCompleted(){
+    vegCollected++
+    collected.innerHTML = vegCollected
+    if(vegCollected === 6){
+      console.log('yay compled!')
+
     }
-
   }
-
-
-
 
   // Need these Braces
 })
