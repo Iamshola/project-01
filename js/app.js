@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
   const squares = document.querySelectorAll('.grid div')
-  const obstacles = document.querySelector('.obstacles')
+  // const obstaclesLollipop = document.querySelector('.obstaclesLollipop')
+  // const obstaclesMilkshake = document.querySelector('.obstaclesMilkshake')
+  // const obstaclesDonut = document.querySelector('.obstaclesDonut')
   const riskArea = document.querySelectorAll('.riskArea')
   const home = document.querySelectorAll('home')
   const scoreBoard = document.querySelector('.scoreBoard')
@@ -24,6 +26,15 @@ document.addEventListener('DOMContentLoaded', () => {
   let logIndex = 5
   let currentIndexRow2 = 11
   let currentIndexRow3 = 23
+
+
+  var radish = {
+    littleGirl:'img/littleGirl.png',
+    gemItem:  'img/radish.png',
+    littleGirlWithGem: 'img/littleGirl-radish.png',
+    plateWithGem: 'img/plate-radish.png'
+
+  }
 
   // notes
   // currentIndex = any position on the grid
@@ -61,16 +72,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // goObstaclesLogs starts
   function goObstaclesLogs(){
-    if(logIndex < 12 && logIndex > 5){
-      squares[logIndex].classList.add('obstacles')
-      squares[logIndex].classList.remove('obstacles')
+    if(logIndex < 11 && logIndex > 5){
+      squares[logIndex].classList.add('obstaclesLollipop')
+      squares[logIndex].classList.remove('obstaclesLollipop')
       logIndex += 1
       collisionCheck = logIndex
-      squares[logIndex].classList.add('obstacles')
+      squares[logIndex].classList.add('obstaclesLollipop')
     } else {
-      squares[logIndex].classList.remove('obstacles')
+      squares[logIndex].classList.remove('obstaclesLollipop')
       logIndex = 6
-      squares[logIndex].classList.add('obstacles')
+      squares[logIndex].classList.add('obstaclesLollipop')
     }
   }
   setInterval(goObstaclesLogs, 500)
@@ -79,15 +90,15 @@ document.addEventListener('DOMContentLoaded', () => {
   //goObstaclesLog2 starts
   function goObstaclesTwo(){
     if(currentIndexRow2 < 17 && currentIndexRow2 > 11){
-      squares[currentIndexRow2].classList.add('obstacles')
-      squares[currentIndexRow2].classList.remove('obstacles')
+      squares[currentIndexRow2].classList.add('obstaclesMilkshake')
+      squares[currentIndexRow2].classList.remove('obstaclesMilkshake')
       currentIndexRow2 += 1
       collisionCheckRow2 = currentIndexRow2
-      squares[currentIndexRow2].classList.add('obstacles')
+      squares[currentIndexRow2].classList.add('obstaclesMilkshake')
     } else {
-      squares[currentIndexRow2].classList.remove('obstacles')
+      squares[currentIndexRow2].classList.remove('obstaclesMilkshake')
       currentIndexRow2 = 12
-      squares[currentIndexRow2].classList.add('obstacles')
+      squares[currentIndexRow2].classList.add('obstaclesMilkshake')
       // setTimeout(() => squares[currentIndexRow3-1].classList.remove('obstacles'), 750)
     }
   }
@@ -97,15 +108,15 @@ document.addEventListener('DOMContentLoaded', () => {
   //goObstaclesThree starts
   function goObstaclesThree(){
     if(currentIndexRow3 < 29 && currentIndexRow3 > 23){
-      squares[currentIndexRow3].classList.add('obstacles')
-      squares[currentIndexRow3].classList.remove('obstacles')
+      squares[currentIndexRow3].classList.add('obstaclesDonut')
+      squares[currentIndexRow3].classList.remove('obstaclesDonut')
       currentIndexRow3 += 1
       collisionCheckRow3 = currentIndexRow3
-      squares[currentIndexRow3].classList.add('obstacles')
+      squares[currentIndexRow3].classList.add('obstaclesDonut')
     } else {
-      squares[currentIndexRow3].classList.remove('obstacles')
+      squares[currentIndexRow3].classList.remove('obstaclesDonut')
       currentIndexRow3 = 24
-      squares[currentIndexRow3].classList.add('obstacles')
+      squares[currentIndexRow3].classList.add('obstaclesDonut')
       // setTimeout(() => squares[currentIndexRow3-1].classList.remove('obstacles'), 750)
     }
   }
@@ -145,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
       squares[currentIndex].classList.remove('gem')
       squares[currentIndex].classList.remove('gemwithveg')
       squares[currentIndex].classList.add('homeWithGem')
-      gameCompleted()
+      level1Completed()
       if(home === 'homeWithGem'){
         squares[currentIndex].classList.remove('gemwithveg')
       }
@@ -166,13 +177,23 @@ document.addEventListener('DOMContentLoaded', () => {
     return newMolePoistion
   }
 
-  function gameCompleted(){
+  function level2 (){
+    // reset()
+  }
+
+
+
+  function level1Completed(){
     vegCollected++
     collected.innerHTML = vegCollected
     if(vegCollected === 6){
-      console.log('Well done, completed!')
+      alert('Well done, completed! Welcome to Level 2!')
+      level2()
     }
   }
+
+
+
 
   // Need these Braces
 })

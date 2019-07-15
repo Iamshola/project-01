@@ -114,8 +114,22 @@ div i{
   background-color: turquoise;
 }
 
-.obstacles {
+.obstaclesLollipop {
   background-image: url(../img/lollipop.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+}
+.obstaclesMilkshake {
+  background-image: url(../img/milkshake.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+}
+.obstaclesDonut {
+  background-image: url(../img/donut.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
