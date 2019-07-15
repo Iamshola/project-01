@@ -170,8 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
     vegCollected++
     collected.innerHTML = vegCollected
     if(vegCollected === 6){
-      console.log('yay compled!')
-
+      console.log('Well done, completed!')
     }
   }
 
