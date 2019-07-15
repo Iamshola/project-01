@@ -9,20 +9,24 @@ document.addEventListener('DOMContentLoaded', () => {
   let gemIndex = 1
   let randomIndex = 6
   let collisionCheck = 1
-  let collisionCheck1 = 1
-  let collisionCheck2 = 1
+  let collisionCheckRow2 = 1
+  let collisionCheckRow3 = 1
   let molePoistion = 30
   let currentIndex = 30
   let homeIndex = 1
   const width = 6
   let logIndex = 6
-  let currentIndex2 = 12
-  let currentIndex3 = 24
-  // const stop = false
+  let currentIndexRow2 = 12
+  let currentIndexRow3 = 24
+
+  // notes
+  // currentIndex = any position on the grid
+  // log index = any poistion on row 1 of obstacles
+  // log currentIndexRow2/goobstaclesTwo = any poistion on row 2 of obstacles
+  // log currentIndexRow3/goobstaclesThree = any poistion on row 3 of obstacles
 
 
-  // const stop = false
-  // if on click run functionn essentially
+
 
   // Move moveMyCharacter starts
   function moveMyCharacter(e) {
@@ -46,6 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     squares[currentIndex].classList.add(mole)
     molePoistion = currentIndex
+    moleOnPlate()
   }
 
   document.addEventListener('keyup', moveMyCharacter)
@@ -66,28 +71,28 @@ document.addEventListener('DOMContentLoaded', () => {
   // goObstaclesLogs ends
 
   //goObstaclesLog2 starts
-  function goObstaclesLog2(){
-    if(currentIndex2 === 18){
-      currentIndex2 = 12
-    } else if (currentIndex2 >= 12){
-      squares[currentIndex2].classList.add('obstacles')
-      collisionCheck1 = currentIndex2
-      currentIndex2++
-      setTimeout(() => squares[currentIndex2-1].classList.remove('obstacles'), 750)
+  function goObstaclesTwo(){
+    if(currentIndexRow2 === 18){
+      currentIndexRow2 = 12
+    } else if (currentIndexRow2 >= 12){
+      squares[currentIndexRow2].classList.add('obstacles')
+      collisionCheckRow2 = currentIndexRow2
+      currentIndexRow2++
+      setTimeout(() => squares[currentIndexRow2-1].classList.remove('obstacles'), 750)
     }
   }
-  setInterval(goObstaclesLog2, 1000)
+  setInterval(goObstaclesTwo, 1000)
   //goObstaclesLog2 ends
 
   //goObstaclesThree starts
   function goObstaclesThree(){
-    if(currentIndex3 === 30){
-      currentIndex3 = 24
-    } else if (currentIndex3 >= 24){
-      squares[currentIndex3].classList.add('obstacles')
-      collisionCheck2 = currentIndex3
-      currentIndex3++
-      setTimeout(() => squares[currentIndex3-1].classList.remove('obstacles'), 750)
+    if(currentIndexRow3 === 30){
+      currentIndexRow3 = 24
+    } else if (currentIndexRow3 >= 24){
+      squares[currentIndexRow3].classList.add('obstacles')
+      collisionCheckRow3 = currentIndexRow3
+      currentIndexRow3++
+      setTimeout(() => squares[currentIndexRow3-1].classList.remove('obstacles'), 750)
     }
   }
   setInterval(goObstaclesThree, 1000)
@@ -102,22 +107,18 @@ document.addEventListener('DOMContentLoaded', () => {
     if(squares[currentIndex].classList.contains('gem')) {
       // squares[currentIndex].classList.remove(mole)
     }
-    // squares[currentIndex].classList.add(mole)
-
   }
   getGoals()
 
   function collision(){
-    if(molePoistion === collisionCheck || molePoistion === collisionCheck1 || molePoistion === collisionCheck2){
+    if(molePoistion === collisionCheck || molePoistion === collisionCheckRow2 || molePoistion === collisionCheckRow3){
       squares[currentIndex].classList.remove(mole)
       currentIndex = 30
       if(mole === 'gemwithveg'){
-        // squares[gemIndex].classList.remove('gem')
         getGoals()
       }
       mole = 'mole'
       return squares[currentIndex].classList.add(mole)
-
     } if (gemIndex === molePoistion){
       squares[currentIndex].classList.remove(mole)
       mole = 'gemwithveg'
@@ -127,19 +128,25 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   setInterval(collision, 250)
 
-  // function moleOnPlate(){
-  //   homeIndex = 3
-  //   console.log(homeIndex)
-  //   if(molePoistion === homeIndex){
-  //     squares[homeIndex].classList.remove('home')
-  //     squares[homeIndex].classList.add('homeWithGem')
-  //   }
-  //   reset()
-  // }
-  // moleOnPlate()
+  function moleOnPlate(){
+    if(squares[currentIndex].classList.contains('home')) {
+      squares[currentIndex].classList.remove('home')
+      squares[currentIndex].classList.add('homeWithGem')
+      console.log('there')
+    }
+    moleNewPoistion()
+
+  }
+
+  function moleNewPoistion(){
 
 
 
+
+
+
+
+  }
 
   // Need these Braces
 })
