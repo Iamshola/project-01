@@ -123,7 +123,7 @@ div i{
 
 }
  .vegetable {
- /* [data-type='1'] { */
+ /* [data-type='1']{ */
    background-image: url(../img/radish.png);
    background-size: contain;
    background-repeat: no-repeat;

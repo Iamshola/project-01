@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // log currentIndexRow2/goobstaclesTwo = any poistion on row 2 of obstacles
   // log currentIndexRow3/goobstaclesThree = any poistion on row 3 of obstacles
 
-  let dataType = [1,2,3,4,5,6]
+  // let dataType = [1,2,3,4,5,6]
 
   function startGame(){
     setInterval(goObstaclesLogs, 800)
@@ -153,8 +153,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const randomriskArea = riskArea[randomIndex]
     vegIndex = +(randomriskArea.innerHTML)
     riskArea[randomIndex].classList.add('vegetable')
-    // riskArea[randomIndex].setAttribute(data-type, '5')
     console.log(riskArea[randomIndex].classList)
+
   }
 
 
