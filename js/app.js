@@ -27,25 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentIndexRow2 = 36
   let currentIndexRow3 = 42
 
-
-  // datatype 1 - radish
-  // datatype 2 - Tomato
-  // datatype 3 - Corn
-  // datatype 4 - pumpkin
-  // datatype 5 - broccoli
-  // datatype 6 - mushroom
-
-
-  // things to be looped through
-  // sarah
-  // vegetable
-
-
-  // notes
-  // currentIndex = any position on the grid
-  // log index = any poistion on row 1 of obstacles
-  // log currentIndexRow2/goobstaclesTwo = any poistion on row 2 of obstacles
-  // log currentIndexRow3/goobstaclesThree = any poistion on row 3 of obstacles
+  // datatype 1 - radish, datatype 2 - Tomato, datatype 3 - Corn
+  // datatype 4 - pumpkin, datatype 5 - broccoli, datatype 6 - mushroom
 
   // let dataType = [1,2,3,4,5,6]
 
@@ -94,10 +77,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.addEventListener('keyup', moveMyCharacter)
   // Move moveMyCharacter ends
+  
+  // function goObstaclesLogs(){
+  //   if(logIndex < 29 && logIndex > 23){
+  //     collisionCheck = logIndex
+  //     squares[logIndex].classList.add('obstaclesLollipop')
+  //     squares[logIndex].classList.remove('obstaclesLollipop')
+  //     logIndex += 1
+  //     squares[logIndex].classList.add('obstaclesLollipop')
+  //   } else {
+  //     collisionCheck = logIndex
+  //     squares[logIndex].classList.remove('obstaclesLollipop')
+  //     logIndex = 24
+  //     squares[logIndex].classList.add('obstaclesLollipop')
+  //   }
+  // }
 
   // goObstaclesLogs starts
   function goObstaclesLogs(){
-    if(logIndex < 29 && logIndex >= 23){
+    if(logIndex < 29 && logIndex > 23){
       collisionCheck = logIndex
       squares[logIndex].classList.add('obstaclesLollipop')
       squares[logIndex].classList.remove('obstaclesLollipop')
@@ -114,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   //goObstaclesTwostarts
   function goObstaclesTwo(){
-    if(currentIndexRow2 < 41 && currentIndexRow2 >= 35){
+    if(currentIndexRow2 < 41 && currentIndexRow2 > 35){
       collisionCheckRow2 = currentIndexRow2
       squares[currentIndexRow2].classList.add('obstaclesMilkshake')
       squares[currentIndexRow2].classList.remove('obstaclesMilkshake')
@@ -132,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   //goObstaclesThree starts
   function goObstaclesThree(){
-    if(currentIndexRow3 < 47 && currentIndexRow3 >= 41){
+    if(currentIndexRow3 < 47 && currentIndexRow3 > 41){
       collisionCheckRow3 = currentIndexRow3
       squares[currentIndexRow3].classList.add('obstaclesDonut')
       squares[currentIndexRow3].classList.remove('obstaclesDonut')
