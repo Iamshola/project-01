@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const lostLives = document.querySelector('lostLives')
   const start = document.querySelector('.start')
   const restart = document.querySelector('.restart')
+  let audio = document.querySelector('audio')
   const score = 0
   // const lives  =  document.querySelector('lives')
 
@@ -19,12 +20,12 @@ document.addEventListener('DOMContentLoaded', () => {
   let collisionCheck = 1
   let collisionCheckRow2 = 1
   let collisionCheckRow3 = 0
-  let sarahPosition = 30
-  let newSarahPosition = 31
-  let currentIndex = 30
-  let logIndex = 5
-  let currentIndexRow2 = 11
-  let currentIndexRow3 = 23
+  let sarahPosition = 48
+  let newSarahPosition = 48
+  let currentIndex = 49
+  let logIndex = 24
+  let currentIndexRow2 = 36
+  let currentIndexRow3 = 42
 
 
   // datatype 1 - radish
@@ -96,17 +97,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // goObstaclesLogs starts
   function goObstaclesLogs(){
-    if(logIndex < 11 && logIndex >= 5){
+    if(logIndex < 29 && logIndex >= 23){
+      collisionCheck = logIndex
       squares[logIndex].classList.add('obstaclesLollipop')
       squares[logIndex].classList.remove('obstaclesLollipop')
       logIndex += 1
-      collisionCheck = logIndex
-
       squares[logIndex].classList.add('obstaclesLollipop')
-
     } else {
+      collisionCheck = logIndex
       squares[logIndex].classList.remove('obstaclesLollipop')
-      logIndex = 6
+      logIndex = 24
       squares[logIndex].classList.add('obstaclesLollipop')
     }
   }
@@ -114,15 +114,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   //goObstaclesTwostarts
   function goObstaclesTwo(){
-    if(currentIndexRow2 < 17 && currentIndexRow2 > 11){
+    if(currentIndexRow2 < 41 && currentIndexRow2 >= 35){
+      collisionCheckRow2 = currentIndexRow2
       squares[currentIndexRow2].classList.add('obstaclesMilkshake')
       squares[currentIndexRow2].classList.remove('obstaclesMilkshake')
       currentIndexRow2 += 1
-      collisionCheckRow2 = currentIndexRow2
       squares[currentIndexRow2].classList.add('obstaclesMilkshake')
     } else {
+      collisionCheckRow2 = currentIndexRow2
       squares[currentIndexRow2].classList.remove('obstaclesMilkshake')
-      currentIndexRow2 = 12
+      currentIndexRow2 = 36
       squares[currentIndexRow2].classList.add('obstaclesMilkshake')
     }
   }
@@ -131,9 +132,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   //goObstaclesThree starts
   function goObstaclesThree(){
-    if(currentIndexRow3 < 29 && currentIndexRow3 >= 23){
+    if(currentIndexRow3 < 47 && currentIndexRow3 >= 41){
       collisionCheckRow3 = currentIndexRow3
-      console.log(currentIndexRow3, 'row3')
       squares[currentIndexRow3].classList.add('obstaclesDonut')
       squares[currentIndexRow3].classList.remove('obstaclesDonut')
       currentIndexRow3 += 1
@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       collisionCheckRow3 = currentIndexRow3
       squares[currentIndexRow3].classList.remove('obstaclesDonut')
-      currentIndexRow3 = 24
+      currentIndexRow3 = 42
       squares[currentIndexRow3].classList.add('obstaclesDonut')
     }
   }
@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const randomriskArea = riskArea[randomIndex]
     vegIndex = +(randomriskArea.innerHTML)
     riskArea[randomIndex].classList.add('vegetable')
-    console.log(riskArea[randomIndex].classList)
+    // console.log(riskArea[randomIndex].classList)
 
   }
 
@@ -161,7 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function collision(){
     if(sarahPosition === collisionCheck || sarahPosition === collisionCheckRow2 || sarahPosition === collisionCheckRow3){
       squares[currentIndex].classList.remove(sarah)
-      currentIndex = 30
+      currentIndex = 49
       if(sarah === 'sarahWithVeg'){
         getGoals()
       }
@@ -175,6 +175,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // function hitByObjectAudio() {
+  //   audio.src = 'audio/hitByObject.wav'
+  //   audio.play()
+  // }
 
   function sarahOnPlate(){
     if(squares[currentIndex].classList.contains('home') && squares[currentIndex].classList.contains('sarahWithVeg')) {
@@ -188,14 +192,13 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       sarahNewPoistion()
       getGoals()
-      currentIndex = 32
+      currentIndex = 48
       sarah = 'sarah'
       squares[currentIndex].classList.remove('vegetable')
       return squares[currentIndex].classList.add('sarah')
     } else if (squares[currentIndex].classList.contains('home') && !squares[currentIndex].classList.contains('sarahWithVeg')) {
-      currentIndex = 35
+      currentIndex = 50
       squares[currentIndex].classList.add('sarah')
-
       // squares[currentIndex].classList.setAttribute('homeWithGem',[2])
 
     }
