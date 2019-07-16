@@ -29,7 +29,7 @@ h2{
 }
 
 h4{
-font-size: 16px;
+font-size: 1px;
 margin: 0;
 }
 
@@ -211,7 +211,7 @@ div i{
  }
 
  .homeWithGem {
- [data-type='1']
+ /* [data-type='1'] */
    background-image: url(../img/plate-radish.png);
    background-size: contain;
    background-repeat: no-repeat;

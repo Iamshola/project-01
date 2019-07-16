@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const collected = document.querySelector('.collected')
   const lostLives = document.querySelector('lostLives')
   const start = document.querySelector('.start')
+  const restart = document.querySelector('.restart')
   const score = 0
   // const lives  =  document.querySelector('lives')
 
@@ -17,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let randomIndex = 6
   let collisionCheck = 1
   let collisionCheckRow2 = 1
-  let collisionCheckRow3 = 1
+  let collisionCheckRow3 = 0
   let sarahPosition = 30
   let newSarahPosition = 31
   let currentIndex = 30
@@ -53,10 +54,17 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(goObstaclesThree, 1000)
     setInterval(collision, 100)
     getGoals()
+  }
 
+  function restartGame(){
+    clearInterval(goObstaclesLogs, 0)
+    clearInterval(goObstaclesTwo, 0)
+    clearInterval(goObstaclesThree, 0)
+    clearInterval(collision, 0)
   }
 
   start.addEventListener('click', startGame)
+  restart.addEventListener('click', restartGame)
 
   // Move moveMyCharacter starts
   function moveMyCharacter(e) {
@@ -95,6 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
       collisionCheck = logIndex
 
       squares[logIndex].classList.add('obstaclesLollipop')
+
     } else {
       squares[logIndex].classList.remove('obstaclesLollipop')
       logIndex = 6
@@ -122,14 +131,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   //goObstaclesThree starts
   function goObstaclesThree(){
-    if(currentIndexRow3 < 29 && currentIndexRow3 > 23){
-      squares[currentIndexRow3].classList.add('obstaclesDonut')
-      squares[currentIndexRow3].classList.remove('obstaclesDonut')
-      currentIndexRow3 += 1
+    if(currentIndexRow3 < 29 && currentIndexRow3 >= 23){
       collisionCheckRow3 = currentIndexRow3
       console.log(currentIndexRow3, 'row3')
       squares[currentIndexRow3].classList.add('obstaclesDonut')
+      squares[currentIndexRow3].classList.remove('obstaclesDonut')
+      currentIndexRow3 += 1
+      squares[currentIndexRow3].classList.add('obstaclesDonut')
     } else {
+      collisionCheckRow3 = currentIndexRow3
       squares[currentIndexRow3].classList.remove('obstaclesDonut')
       currentIndexRow3 = 24
       squares[currentIndexRow3].classList.add('obstaclesDonut')
@@ -143,6 +153,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const randomriskArea = riskArea[randomIndex]
     vegIndex = +(randomriskArea.innerHTML)
     riskArea[randomIndex].classList.add('vegetable')
+    // riskArea[randomIndex].setAttribute(data-type, '5')
+    console.log(riskArea[randomIndex].classList)
   }
 
 
@@ -183,7 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (squares[currentIndex].classList.contains('home') && !squares[currentIndex].classList.contains('sarahWithVeg')) {
       currentIndex = 35
       squares[currentIndex].classList.add('sarah')
-      
+
       // squares[currentIndex].classList.setAttribute('homeWithGem',[2])
 
     }
@@ -198,7 +210,12 @@ document.addEventListener('DOMContentLoaded', () => {
     vegCollected++
     collected.innerHTML = vegCollected
     if(vegCollected === 2){
-      alert('Well Done')
+      setInterval(goObstaclesLogs, 600)
+      setInterval(goObstaclesTwo, 800)
+      setInterval(goObstaclesThree, 1000)
+    }
+    if(vegCollected === 6){
+      alert('End Game')
     }
   }
 
