@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Frogger</title>
-  <script src="https://kit.fontawesome.com/419c3e318b.js"></script>
   <link rel="stylesheet" href="css/style.css">
   <link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
   <script src="js/app.js" charset="utf-8"></script>
+  <script src="https://kit.fontawesome.com/419c3e318b.js"></script>
  </head>
  <body>
    <h1>Sarah's Salad Bar</h1>
@@ -52,7 +52,7 @@
       <div class="riskArea">27</div>
       <div class="riskArea">28</div>
       <div class="riskArea">29</div>
-      <div class="mole safe">30</div>
+      <div class="sarah safe">30</div>
       <div class="safe">31</div>
       <div class="safe">32</div>
       <div class="safe">33</div>
@@ -62,15 +62,25 @@
     </div>
     <div class="scoreBoard">
      <div class="score"></div>
-     <div class="lives"> <br>
-       <h2>Lives </h2>
-       <i class="fas fa-heart">Obesity</i> <br>
-       <i class="fas fa-heart">Heart Attack</i> <br>
-       <i class="fas fa-heart">Type 2 Diabetes</i> <br>
-       <i class="fas fa-heart">Obesity</i> <br>
+     <div class="lives"><br>
+       <h3>Lives </h3>
+       <p class="lostLives">5</p>
+       <p> <i class="liveCountdown fas fa-heart"></i> Obesity</p>
+       <p> <i class="liveCountdown fas fa-heart"></i> Type 2 Diabetes</p>
+       <p> <i class="liveCountdown fas fa-heart"></i> High Blood Pressure</p>
+       <p> <i class="liveCountdown fas fa-heart"></i> Joint Pains</p>
+       <p> <i class="liveCountdown fas fa-heart"></i> Tooth Decay </p>
      </div>
-     <button onClick="startGame()">Start</button>
-     <button onClick="restartGame()">Restart</button>
+     <button class="start">Start</button>
+     <button>Restart</button>
     </div>
+    </div>
+  <footer>
+    <h4>Images Sourced From:</h4>
+    <a href="https://www.freepik.com/free-photos-vectors/food">Food Cartoons</a>
+    <a href="https://www.freepik.com/free-photos-vectors/background">Cutlery Cartoon</a>
+    <a href="https://www.freepik.com/free-photos-vectors/school">Main Character Cartoon</a>
+    <a href="https://www.freepik.com/free-photos-vectors/food">Junk Food Cartoons</a>
+  </footer>
  </body>
 </html>

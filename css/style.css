@@ -1,12 +1,11 @@
 * {
   box-sizing: border-box;
-
 }
+ p{
+   font-size: 20px;
+ }
 
-i {
-  font-family: 'Nanum Pen Script', cursive;
 
-}
 body {
   margin: 0;
   font-size: 24px;
@@ -16,14 +15,26 @@ body {
 
 
 }
+h1{
+  margin: 0 0 20px 0;
+}
 h1 h4 p {
 text-align: center;
-color: 	#C5B358;
+color: #C5B358;
 font-family: 'Roboto Condensed', sans-serif;
 }
 
 h2{
-  font-size: 40px;
+  font-size: 30px;
+}
+
+h4{
+font-size: 16px;
+margin: 0;
+}
+
+a{
+  font-size: 12px;
 }
 
 header {
@@ -33,28 +44,27 @@ header {
 }
 
 button{
-  width: 100px;
-  height: 40px;
+  width: 75px;
+  height: 30px;
   margin-left: 20px;
-  margin-top: 60px;
   font-size: 20px;
+  font-family: 'Nanum Pen Script', cursive;
 }
 .scoreBoard{
   background-image: url(../img/blackBoard.jpg);
   background-repeat: no-repeat;
-  width: 400px;
-  height: 600px;
+  width: 300px;
+  height: 400px;
   background-color: #9C9696;
-  padding: 15px;
-  margin: 230px 30px;
+  margin: 30px 20px;
   color: white;
   font-family: 'Nanum Pen Script', cursive;
   border-radius: 20px;
 }
 
 .game {
-  width: 1050px;
-  height: 1050px;
+  width: 650px;
+  height: 650px;
   margin-left: 20px;
   padding: 10px;
   border: 0.5px solid black;
@@ -74,37 +84,14 @@ button{
 }
 .everything{
   display: flex;
-  margin: 10px;
 }
 div i{
-  margin: 5px;
+  /* margin: 5px; */
   text-align: center;
 }
 
-.lives{
-  margin: 10px;
-
-}
-
-
-.mole {
+.sarah {
   background-image: url(../img/littleGirl.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-
-.home{
-  background-image: url(../img/plate.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-
-}
-
-.homeWithGem{
-  background-image: url(../img/plate-radish.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -135,16 +122,128 @@ div i{
   background-position: center;
 
 }
- .gem{
+ .vegetable {
+ /* [data-type='1'] { */
    background-image: url(../img/radish.png);
+   background-size: contain;
+   background-repeat: no-repeat;
+   background-position: center;
+ }
+ .vegetable [data-type='2']{
+   background-image: url(../img/tomato.png);
+   background-size: contain;
+   background-repeat: no-repeat;
+   background-position: center;
+ }
+ .vegetable [data-type='3']{
+   background-image: url(../img/corn.png);
+   background-size: contain;
+   background-repeat: no-repeat;
+   background-position: center;
+ }
+ .vegetable [data-type='4']{
+   background-image: url(../img/pumpkin.png);
+   background-size: contain;
+   background-repeat: no-repeat;
+   background-position: center;
+ }
+ .vegetable [data-type='5']{
+   background-image: url(../img/broccoli.png);
+   background-size: contain;
+   background-repeat: no-repeat;
+   background-position: center;
+ }
+ .vegetable [data-type='6']{
+   background-image: url(../img/mushroom.png);
    background-size: contain;
    background-repeat: no-repeat;
    background-position: center;
  }
 
 
- .gemwithveg{
-   background-image: url(../img/littleGirl-copy.png);
+ .sarahWithVeg{
+  /* [data-type='1']{ */
+   background-image: url(../img/littleGirl-radish.png);
+   background-size: contain;
+   background-repeat: no-repeat;
+   background-position: center;
+ }
+ .sarahWithVeg [data-type='2']{
+   background-image: url(../img/littleGirl-tomato.png);
+   background-size: contain;
+   background-repeat: no-repeat;
+   background-position: center;
+ }
+
+ .sarahWithVeg [data-type='3']{
+   background-image: url(../img/littleGirl-corn.png);
+   background-size: contain;
+   background-repeat: no-repeat;
+   background-position: center;
+ }
+
+ .sarahWithVeg [data-type='4']{
+   background-image: url(../img/littleGirl-pumpkin.png);
+   background-size: contain;
+   background-repeat: no-repeat;
+   background-position: center;
+ }
+
+ .sarahWithVeg [data-type='5']{
+   background-image: url(../img/littleGirl-broccoli.png);
+   background-size: contain;
+   background-repeat: no-repeat;
+   background-position: center;
+ }
+
+ .sarahWithVeg [data-type='6']{
+   background-image: url(../img/littleGirl-mushroom.png);
+   background-size: contain;
+   background-repeat: no-repeat;
+   background-position: center;
+ }
+ .home{
+   background-image: url(../img/plate.png);
+   background-size: contain;
+   background-repeat: no-repeat;
+   background-position: center;
+
+ }
+
+ .homeWithGem {
+ [data-type='1']
+   background-image: url(../img/plate-radish.png);
+   background-size: contain;
+   background-repeat: no-repeat;
+   background-position: center;
+ }
+ .homeWithGem [data-type='2']{
+   background-image: url(../img/plate-tomato.png);
+   background-size: contain;
+   background-repeat: no-repeat;
+   background-position: center;
+ }
+
+ .homeWithGem [data-type='3']{
+   background-image: url(../img/plate-corn.png);
+   background-size: contain;
+   background-repeat: no-repeat;
+   background-position: center;
+ }
+ .homeWithGem [data-type='4']{
+   background-image: url(../img/plate-pumpkin.png);
+   background-size: contain;
+   background-repeat: no-repeat;
+   background-position: center;
+ }
+ .homeWithGem [data-type='5']{
+   background-image: url(../img/plate-broccoli.png);
+   background-size: contain;
+   background-repeat: no-repeat;
+   background-position: center;
+ }
+ .homeWithGem [data-type='6']{
+   background-image: url(../img/plate-mushroom.png);
    background-size: contain;
    background-repeat: no-repeat;
    background-position: center;

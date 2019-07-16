@@ -1,40 +1,43 @@
 document.addEventListener('DOMContentLoaded', () => {
   const squares = document.querySelectorAll('.grid div')
-  // const obstaclesLollipop = document.querySelector('.obstaclesLollipop')
-  // const obstaclesMilkshake = document.querySelector('.obstaclesMilkshake')
-  // const obstaclesDonut = document.querySelector('.obstaclesDonut')
   const riskArea = document.querySelectorAll('.riskArea')
   const home = document.querySelectorAll('home')
   const scoreBoard = document.querySelector('.scoreBoard')
   const collected = document.querySelector('.collected')
-  let score = 0
+  const lostLives = document.querySelector('lostLives')
+  const start = document.querySelector('.start')
+  const score = 0
+  // const lives  =  document.querySelector('lives')
 
-  let mole = 'mole'
-  // let home = 'home'
-  // let gemwithveg
-  let gemIndex = 1
+  let sarah = 'sarah'
+  const width = 6
+  let vegIndex = 1
   let vegCollected = 0
+  let livesBoard = 5
   let randomIndex = 6
   let collisionCheck = 1
   let collisionCheckRow2 = 1
   let collisionCheckRow3 = 1
-  let molePoistion = 30
-  let newMolePoistion = 31
+  let sarahPosition = 30
+  let newSarahPosition = 31
   let currentIndex = 30
-  // const homeIndex = 1
-  const width = 6
   let logIndex = 5
   let currentIndexRow2 = 11
   let currentIndexRow3 = 23
 
 
-  var radish = {
-    littleGirl:'img/littleGirl.png',
-    gemItem:  'img/radish.png',
-    littleGirlWithGem: 'img/littleGirl-radish.png',
-    plateWithGem: 'img/plate-radish.png'
+  // datatype 1 - radish
+  // datatype 2 - Tomato
+  // datatype 3 - Corn
+  // datatype 4 - pumpkin
+  // datatype 5 - broccoli
+  // datatype 6 - mushroom
 
-  }
+
+  // things to be looped through
+  // sarah
+  // vegetable
+
 
   // notes
   // currentIndex = any position on the grid
@@ -42,9 +45,22 @@ document.addEventListener('DOMContentLoaded', () => {
   // log currentIndexRow2/goobstaclesTwo = any poistion on row 2 of obstacles
   // log currentIndexRow3/goobstaclesThree = any poistion on row 3 of obstacles
 
+  let dataType = [1,2,3,4,5,6]
+
+  function startGame(){
+    setInterval(goObstaclesLogs, 800)
+    setInterval(goObstaclesTwo, 900)
+    setInterval(goObstaclesThree, 1000)
+    setInterval(collision, 100)
+    getGoals()
+
+  }
+
+  start.addEventListener('click', startGame)
+
   // Move moveMyCharacter starts
   function moveMyCharacter(e) {
-    squares[currentIndex].classList.remove(mole)
+    squares[currentIndex].classList.remove(sarah)
     switch(e.keyCode) {
       case 37:
         if(currentIndex % width !== 0) currentIndex -= 1
@@ -59,12 +75,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if(currentIndex + width < width * width) currentIndex += width
         break
     }
-    if(squares[currentIndex].classList.contains(mole)) {
-      squares[currentIndex].classList.remove(mole)
+    if(squares[currentIndex].classList.contains(sarah)) {
+      squares[currentIndex].classList.remove(sarah)
     }
-    squares[currentIndex].classList.add(mole)
-    molePoistion = currentIndex
-    moleOnPlate()
+    squares[currentIndex].classList.add(sarah)
+    sarahPosition = currentIndex
+    sarahOnPlate()
   }
 
   document.addEventListener('keyup', moveMyCharacter)
@@ -72,11 +88,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // goObstaclesLogs starts
   function goObstaclesLogs(){
-    if(logIndex < 11 && logIndex > 5){
+    if(logIndex < 11 && logIndex >= 5){
       squares[logIndex].classList.add('obstaclesLollipop')
       squares[logIndex].classList.remove('obstaclesLollipop')
       logIndex += 1
       collisionCheck = logIndex
+
       squares[logIndex].classList.add('obstaclesLollipop')
     } else {
       squares[logIndex].classList.remove('obstaclesLollipop')
@@ -84,10 +101,9 @@ document.addEventListener('DOMContentLoaded', () => {
       squares[logIndex].classList.add('obstaclesLollipop')
     }
   }
-  setInterval(goObstaclesLogs, 500)
 
 
-  //goObstaclesLog2 starts
+  //goObstaclesTwostarts
   function goObstaclesTwo(){
     if(currentIndexRow2 < 17 && currentIndexRow2 > 11){
       squares[currentIndexRow2].classList.add('obstaclesMilkshake')
@@ -99,11 +115,10 @@ document.addEventListener('DOMContentLoaded', () => {
       squares[currentIndexRow2].classList.remove('obstaclesMilkshake')
       currentIndexRow2 = 12
       squares[currentIndexRow2].classList.add('obstaclesMilkshake')
-      // setTimeout(() => squares[currentIndexRow3-1].classList.remove('obstacles'), 750)
     }
   }
-  setInterval(goObstaclesTwo, 500)
-  //goObstaclesLog2 ends
+
+  //goObstaclesTwoends
 
   //goObstaclesThree starts
   function goObstaclesThree(){
@@ -112,88 +127,80 @@ document.addEventListener('DOMContentLoaded', () => {
       squares[currentIndexRow3].classList.remove('obstaclesDonut')
       currentIndexRow3 += 1
       collisionCheckRow3 = currentIndexRow3
+      console.log(currentIndexRow3, 'row3')
       squares[currentIndexRow3].classList.add('obstaclesDonut')
     } else {
       squares[currentIndexRow3].classList.remove('obstaclesDonut')
       currentIndexRow3 = 24
       squares[currentIndexRow3].classList.add('obstaclesDonut')
-      // setTimeout(() => squares[currentIndexRow3-1].classList.remove('obstacles'), 750)
     }
   }
-  setInterval(goObstaclesThree, 500)
   //goObstaclesThree ends
 
   // MakeGoals starts
   function getGoals(){
     randomIndex = Math.floor(Math.random() * riskArea.length)
     const randomriskArea = riskArea[randomIndex]
-    gemIndex = +(randomriskArea.innerHTML)
-    riskArea[randomIndex].classList.add('gem')
+    vegIndex = +(randomriskArea.innerHTML)
+    riskArea[randomIndex].classList.add('vegetable')
   }
-  getGoals()
+
 
   function collision(){
-    if(molePoistion === collisionCheck || molePoistion === collisionCheckRow2 || molePoistion === collisionCheckRow3){
-      squares[currentIndex].classList.remove(mole)
+    if(sarahPosition === collisionCheck || sarahPosition === collisionCheckRow2 || sarahPosition === collisionCheckRow3){
+      squares[currentIndex].classList.remove(sarah)
       currentIndex = 30
-      if(mole === 'gemwithveg'){
+      if(sarah === 'sarahWithVeg'){
         getGoals()
       }
-      mole = 'mole'
-      return squares[currentIndex].classList.add(mole)
-    } if (gemIndex === molePoistion){
-      squares[currentIndex].classList.remove(mole)
-      mole = 'gemwithveg'
-      squares[currentIndex].classList.add('gemwithveg')
-      squares[currentIndex].classList.remove('gem')
+      sarah = 'sarah'
+      return squares[currentIndex].classList.add(sarah)
+    } if (vegIndex === sarahPosition){
+      squares[currentIndex].classList.remove(sarah)
+      sarah = 'sarahWithVeg'
+      squares[currentIndex].classList.add('sarahWithVeg')
+      squares[currentIndex].classList.remove('vegetable')
     }
   }
-  setInterval(collision, 250)
 
-  function moleOnPlate(){
-    if(squares[currentIndex].classList.contains('home') && squares[currentIndex].classList.contains('gemwithveg')) {
+
+  function sarahOnPlate(){
+    if(squares[currentIndex].classList.contains('home') && squares[currentIndex].classList.contains('sarahWithVeg')) {
       squares[currentIndex].classList.remove('home')
-      squares[currentIndex].classList.remove('gem')
-      squares[currentIndex].classList.remove('gemwithveg')
+      squares[currentIndex].classList.remove('vegetable')
+      squares[currentIndex].classList.remove('sarahWithVeg')
       squares[currentIndex].classList.add('homeWithGem')
       level1Completed()
       if(home === 'homeWithGem'){
-        squares[currentIndex].classList.remove('gemwithveg')
+        squares[currentIndex].classList.remove('sarahWithVeg')
       }
-      moleNewPoistion()
+      sarahNewPoistion()
       getGoals()
       currentIndex = 32
-      mole = 'mole'
-      squares[currentIndex].classList.remove('gem')
-      return squares[currentIndex].classList.add('mole')
-    } else if (squares[currentIndex].classList.contains('home') && !squares[currentIndex].classList.contains('gemwithveg')) {
+      sarah = 'sarah'
+      squares[currentIndex].classList.remove('vegetable')
+      return squares[currentIndex].classList.add('sarah')
+    } else if (squares[currentIndex].classList.contains('home') && !squares[currentIndex].classList.contains('sarahWithVeg')) {
       currentIndex = 35
-      squares[currentIndex].classList.add('mole')
+      squares[currentIndex].classList.add('sarah')
+      
+      // squares[currentIndex].classList.setAttribute('homeWithGem',[2])
+
     }
   }
 
-  function moleNewPoistion(){
-    newMolePoistion = squares[currentIndex].classList.add('mole')
-    return newMolePoistion
+  function sarahNewPoistion(){
+    newSarahPosition = squares[currentIndex].classList.add('sarah')
+    return newSarahPosition
   }
-
-  function level2 (){
-    // reset()
-  }
-
-
 
   function level1Completed(){
     vegCollected++
     collected.innerHTML = vegCollected
-    if(vegCollected === 6){
-      alert('Well done, completed! Welcome to Level 2!')
-      level2()
+    if(vegCollected === 2){
+      alert('Well Done')
     }
   }
-
-
-
 
   // Need these Braces
 })
