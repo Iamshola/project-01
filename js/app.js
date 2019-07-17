@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const start = document.querySelector('.start')
   const restart = document.querySelector('.restart')
   let audio = document.querySelector('audio')
+  const timer = document.querySelector('.timer')
   const score = 0
   // const lives  =  document.querySelector('lives')
 
@@ -32,6 +33,10 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentIndexRow4 = 47
   let typeofVeg = 0
 
+  // eventListeners
+  start.addEventListener('click', startGame)
+  restart.addEventListener('click', restartGame)
+  document.addEventListener('keyup', moveMyCharacter)
   // datatype 1 - radish, datatype 2 - Tomato, datatype 3 - Corn
   // datatype 4 - pumpkin, datatype 5 - broccoli, datatype 6 - mushroom
 
@@ -44,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(goObstaclesThree, 1000)
     setInterval(goObstaclesFour, 950)
     setInterval(collision, 100)
+    setInterval(countdown, 1000)
     getGoals()
   }
 
@@ -54,8 +60,19 @@ document.addEventListener('DOMContentLoaded', () => {
     clearInterval(goObstaclesThree, 0)
     clearInterval(collision, 0)
   }
-  start.addEventListener('click', startGame)
-  restart.addEventListener('click', restartGame)
+
+  let currentTime = +timer.textContent
+  const timerId = 0
+
+  function countdown() {
+    currentTime--
+    timer.textContent = currentTime
+    if(currentTime === 0) {
+      clearInterval(timerId)
+    }
+  }
+  // const timerId = setInterval(countdown, 1000)
+
 
   // Move moveMyCharacter starts
   function moveMyCharacter(e) {
@@ -81,17 +98,17 @@ document.addEventListener('DOMContentLoaded', () => {
     sarahPosition = currentIndex
     sarahOnPlate()
   }
-  document.addEventListener('keyup', moveMyCharacter)
   // Move moveMyCharacter ends
 
 
-
-
   function gologCrossiants(){
-    if(gologCrossiantsIndex < 12 && gologCrossiantsIndex > 5){
+    if(gologCrossiantsIndex < 11 && gologCrossiantsIndex > 5){
       collisionCheckCrossiants = gologCrossiantsIndex
       squares[gologCrossiantsIndex].classList.remove('logCrossiants')
-      gologCrossiantsIndex++
+      gologCrossiantsIndex += 1
+      squares[gologCrossiantsIndex+1].classList.add('logCrossiants')
+      gologCrossiantsIndex += 1
+      squares[gologCrossiantsIndex+1].classList.remove('logCrossiants')
       squares[gologCrossiantsIndex].classList.add('logCrossiants')
       console.log(gologCrossiantsIndex + 'help')
     } else {
@@ -152,8 +169,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-
-
   function goObstaclesFour(){
     if(currentIndexRow4 < 53 && currentIndexRow4 > 47){
       collisionCheckRow4 = currentIndexRow4
@@ -184,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function collision(){
     if(sarahPosition === collisionCheckCrossiants || sarahPosition === collisionCheck || sarahPosition === collisionCheckRow2 || sarahPosition === collisionCheckRow3|| sarahPosition === collisionCheckRow4){
       squares[currentIndex].classList.remove(sarah)
-      currentIndex = 49
+      currentIndex = 56
       if(sarah === 'sarahWithVeg'){
         getGoals()
       }
@@ -215,13 +230,13 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       sarahNewPoistion()
       getGoals()
-      currentIndex = 48
+      currentIndex = 57
       sarah = 'sarah'
       squares[currentIndex].classList.remove('vegetable')
       // typeofVeg ++
       return squares[currentIndex].classList.add('sarah')
     } else if (squares[currentIndex].classList.contains('home') && !squares[currentIndex].classList.contains('sarahWithVeg')) {
-      currentIndex = 50
+      currentIndex = 59
       squares[currentIndex].classList.add('sarah')
       // squares[currentIndex].classList.setAttribute('homeWithGem',[2])
 
