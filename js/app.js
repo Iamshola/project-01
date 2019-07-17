@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let randomIndex = 6
   let collisionCheckCrossiants = 0
   let collisionCheck = 0
+  let collisionCheckCrossiants1 = 0
   let collisionCheckRow2 = 0
   let collisionCheckRow3 = 0
   let collisionCheckRow4 = 0
@@ -30,11 +31,14 @@ document.addEventListener('DOMContentLoaded', () => {
   let newSarahPosition = 55
   let currentIndex = 55
   let gologCrossiantsIndex = 5
+  let gologCrossiantsIndex1 = 5
   let logIndex = 23
   let currentIndexRow2 = 36
   let currentIndexRow3 = 48
   let currentIndexRow4 = 47
-  let typeofVeg = 0
+  let vegetable = 0
+  let sarahWithVegetables = 0
+  let homeWithGem = 0
 
   // eventListeners
   start.addEventListener('click', startGame)
@@ -44,14 +48,14 @@ document.addEventListener('DOMContentLoaded', () => {
   // datatype 1 - radish, datatype 2 - Tomato, datatype 3 - Corn
   // datatype 4 - pumpkin, datatype 5 - broccoli, datatype 6 - mushroom
 
-  let dataType = [1,2,3,4,5,6]
+  // let dataType = [1,2,3,4,5,6]
 
   function startGame(){
-    setInterval(gologCrossiants, 800)
-    setInterval(goObstaclesLogs, 900)
-    setInterval(goObstaclesTwo, 600)
+    setInterval(gologCrossiants, 1000)
+    setInterval(goObstaclesLogs, 1000)
+    setInterval(goObstaclesTwo, 1000)
     setInterval(goObstaclesThree, 1000)
-    setInterval(goObstaclesFour, 800)
+    setInterval(goObstaclesFour, 1000)
     setInterval(collision, 100)
     setInterval(countdown, 1000)
     getGoals()
@@ -65,6 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
     timer.textContent = timeRemaining
     if(timeRemaining === 0) {
       clearInterval(timerId)
+      gamefinished()
       // function endGame()
     }
   }
@@ -92,24 +97,48 @@ document.addEventListener('DOMContentLoaded', () => {
     squares[currentIndex].classList.add(sarah)
     sarahPosition = currentIndex
     sarahOnPlate()
+    if(sarah === 'sarahWithVegetables'){
+      (squares[currentIndex].setAttribute('data-type', sarahWithVegetables))
+    }
   }
   // Move moveMyCharacter end
 
   // allObstacles()
+
   function gologCrossiants(){
-    if(gologCrossiantsIndex < 11 && gologCrossiantsIndex > 5){
+    if(gologCrossiantsIndex < 18 && gologCrossiantsIndex > 5){
       collisionCheckCrossiants = gologCrossiantsIndex
-      squares[gologCrossiantsIndex+1].classList.add('logCrossiants')
-      gologCrossiantsIndex += 1
-      squares[gologCrossiantsIndex+1].classList.remove('logCrossiants')
       squares[gologCrossiantsIndex].classList.add('logCrossiants')
+      squares[gologCrossiantsIndex + 1].classList.add('logCrossiants')
+      squares[gologCrossiantsIndex].classList.remove('logCrossiants')
+      squares[gologCrossiantsIndex  + 1].classList.remove('logCrossiants')
+      gologCrossiantsIndex += 1
+      squares[gologCrossiantsIndex].classList.add('logCrossiants')
+      squares[gologCrossiantsIndex + 1].classList.add('logCrossiants')
     } else {
       collisionCheckCrossiants = gologCrossiantsIndex
       squares[gologCrossiantsIndex].classList.remove('logCrossiants')
       gologCrossiantsIndex = 6
       squares[gologCrossiantsIndex].classList.add('logCrossiants')
+      squares[gologCrossiantsIndex + 1].classList.add('logCrossiants')
     }
   }
+  // function gologCrossiants1(){
+  //   if(gologCrossiantsIndex1 < 17 && gologCrossiantsIndex1 > 11){
+  //     collisionCheckCrossiants1 = gologCrossiantsIndex1
+  //     squares[gologCrossiantsIndex1].classList.add('logCrossiants')
+  //     squares[gologCrossiantsIndex1].classList.remove('logCrossiants')
+  //     gologCrossiantsIndex1 --
+  //     squares[gologCrossiantsIndex1].classList.add('logCrossiants')
+  //   } else {
+  //     collisionCheckCrossiants = gologCrossiantsIndex1
+  //     squares[gologCrossiantsIndex1].classList.remove('logCrossiants')
+  //     gologCrossiantsIndex1 = 12
+  //     squares[gologCrossiantsIndex1].classList.add('logCrossiants')
+  //   }
+  // }
+  // gologCrossiants1()
+
   // goObstaclesLogs starts
   function goObstaclesLogs(){
     if(logIndex < 29 && logIndex > 23){
@@ -180,54 +209,57 @@ document.addEventListener('DOMContentLoaded', () => {
     const randomriskArea = riskArea[randomIndex]
     vegIndex = +(randomriskArea.innerHTML)
     riskArea[randomIndex].classList.add('vegetable')
-    // console.log(riskArea[randomIndex].classList)
-    riskArea[randomIndex].setAttribute('data-type', typeofVeg)
-
+    riskArea[randomIndex].setAttribute('data-type', vegetable)
   }
 
   function collision(){
     if(sarahPosition === collisionCheckCrossiants || sarahPosition === collisionCheck || sarahPosition === collisionCheckRow2 || sarahPosition === collisionCheckRow3|| sarahPosition === collisionCheckRow4){
       squares[currentIndex].classList.remove(sarah)
       currentIndex = 56
-      if(sarah === 'sarahWithVeg'){
+      if(sarah === 'sarahWithVegetables'){
         getGoals()
       }
       sarah = 'sarah'
       return squares[currentIndex].classList.add(sarah)
     } if (vegIndex === sarahPosition){
       squares[currentIndex].classList.remove(sarah)
-      sarah = 'sarahWithVeg'
-      squares[currentIndex].classList.add('sarahWithVeg')
+      sarah = 'sarahWithVegetables'
       squares[currentIndex].classList.remove('vegetable')
+      squares[currentIndex].classList.add('sarahWithVegetables')
+
+      return squares[currentIndex].setAttribute('data-type', sarahWithVegetables)
     }
   }
 
   function sarahOnPlate(){
-    if(squares[currentIndex].classList.contains('home') && squares[currentIndex].classList.contains('sarahWithVeg')) {
+    if(squares[currentIndex].classList.contains('home') && squares[currentIndex].classList.contains('sarahWithVegetables')) {
       squares[currentIndex].classList.remove('home')
       squares[currentIndex].classList.remove('vegetable')
-      squares[currentIndex].classList.remove('sarahWithVeg')
+      squares[currentIndex].classList.remove('sarahWithVegetables')
       squares[currentIndex].classList.add('homeWithGem')
+      squares[currentIndex].setAttribute('data-type', homeWithGem)
       gameCompleted()
       if(home === 'homeWithGem'){
-        squares[currentIndex].classList.remove('sarahWithVeg')
+        squares[currentIndex].classList.remove('sarahWithVegetables')
       }
       sarahNewPoistion()
       getGoals()
       currentIndex = 57
       sarah = 'sarah'
       squares[currentIndex].classList.remove('vegetable')
-      // typeofVeg ++
       return squares[currentIndex].classList.add('sarah')
-    } else if (squares[currentIndex].classList.contains('home') && !squares[currentIndex].classList.contains('sarahWithVeg')) {
+    } else if (squares[currentIndex].classList.contains('home') && !squares[currentIndex].classList.contains('sarahWithVegetables')) {
       currentIndex = 59
       squares[currentIndex].classList.add('sarah')
-      // squares[currentIndex].classList.setAttribute('data-type',[2])
     }
+
   }
 
   function sarahNewPoistion(){
     newSarahPosition = squares[currentIndex].classList.add('sarah')
+    vegetable++
+    homeWithGem++
+    sarahWithVegetables++
     return newSarahPosition
   }
   function gameCompleted(){
@@ -237,17 +269,26 @@ document.addEventListener('DOMContentLoaded', () => {
       // endGame()
     }
     if(vegCollected === 2){
-      setInterval(goObstaclesLogs, 600)
-      setInterval(goObstaclesTwo, 800)
-      setInterval(goObstaclesThree, 1000)
+      // setInterval(goObstaclesLogs, 1000)
+      // setInterval(goObstaclesTwo, 1000)
+      // setInterval(goObstaclesThree, 1000)
     }
     if(vegCollected === 4){
-      setInterval(goObstaclesLogs, 500)
-      setInterval(goObstaclesTwo, 800)
-      setInterval(goObstaclesThree, 700)
+      // setInterval(goObstaclesLogs, 1000)
+      // setInterval(goObstaclesTwo, 1000)
+      // setInterval(goObstaclesThree, 1000)
     }
   }
 
+  function gamefinished(){
+    clearInterval(gologCrossiants)
+    clearInterval(goObstaclesLogs)
+    clearInterval(goObstaclesTwo)
+    clearInterval(goObstaclesThree)
+    clearInterval(goObstaclesFour)
+    clearInterval(collision)
+    clearInterval(countdown)
+  }
   // let finalTime = +timerCompleted.HTML
   // function endGame(){
   //   finalTime = 120 - timeRemaining
