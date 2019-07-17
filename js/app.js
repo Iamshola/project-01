@@ -4,11 +4,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const home = document.querySelectorAll('home')
   const scoreBoard = document.querySelector('.scoreBoard')
   const collected = document.querySelector('.collected')
+  const timerCompleted = document.querySelector('.timerCompleted')
   const lostLives = document.querySelector('lostLives')
   const start = document.querySelector('.start')
   const restart = document.querySelector('.restart')
   let audio = document.querySelector('audio')
   const timer = document.querySelector('.timer')
+  const gameOver = document.querySelector('#gameOver')
+  const finished = document.querySelector('.finished')
   const score = 0
   // const lives  =  document.querySelector('lives')
 
@@ -35,8 +38,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // eventListeners
   start.addEventListener('click', startGame)
-  restart.addEventListener('click', restartGame)
+  // restart.addEventListener('click', restartGame)
   document.addEventListener('keyup', moveMyCharacter)
+
   // datatype 1 - radish, datatype 2 - Tomato, datatype 3 - Corn
   // datatype 4 - pumpkin, datatype 5 - broccoli, datatype 6 - mushroom
 
@@ -44,35 +48,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function startGame(){
     setInterval(gologCrossiants, 800)
-    setInterval(goObstaclesLogs, 800)
-    setInterval(goObstaclesTwo, 900)
+    setInterval(goObstaclesLogs, 900)
+    setInterval(goObstaclesTwo, 600)
     setInterval(goObstaclesThree, 1000)
-    setInterval(goObstaclesFour, 950)
+    setInterval(goObstaclesFour, 800)
     setInterval(collision, 100)
     setInterval(countdown, 1000)
     getGoals()
   }
 
-  function restartGame(){
-    clearInterval(gologCrossiants, 1000)
-    clearInterval(goObstaclesLogs, 0)
-    clearInterval(goObstaclesTwo, 0)
-    clearInterval(goObstaclesThree, 0)
-    clearInterval(collision, 0)
-  }
-
-  let currentTime = +timer.textContent
-  const timerId = 0
-
+  // Timer Function
+  let timeRemaining = +timer.textContent
+  let timerId = null
   function countdown() {
-    currentTime--
-    timer.textContent = currentTime
-    if(currentTime === 0) {
+    timeRemaining--
+    timer.textContent = timeRemaining
+    if(timeRemaining === 0) {
       clearInterval(timerId)
+      // function endGame()
     }
   }
-  // const timerId = setInterval(countdown, 1000)
-
 
   // Move moveMyCharacter starts
   function moveMyCharacter(e) {
@@ -98,19 +93,16 @@ document.addEventListener('DOMContentLoaded', () => {
     sarahPosition = currentIndex
     sarahOnPlate()
   }
-  // Move moveMyCharacter ends
+  // Move moveMyCharacter end
 
-
+  // allObstacles()
   function gologCrossiants(){
     if(gologCrossiantsIndex < 11 && gologCrossiantsIndex > 5){
       collisionCheckCrossiants = gologCrossiantsIndex
-      squares[gologCrossiantsIndex].classList.remove('logCrossiants')
-      gologCrossiantsIndex += 1
       squares[gologCrossiantsIndex+1].classList.add('logCrossiants')
       gologCrossiantsIndex += 1
       squares[gologCrossiantsIndex+1].classList.remove('logCrossiants')
       squares[gologCrossiantsIndex].classList.add('logCrossiants')
-      console.log(gologCrossiantsIndex + 'help')
     } else {
       collisionCheckCrossiants = gologCrossiantsIndex
       squares[gologCrossiantsIndex].classList.remove('logCrossiants')
@@ -118,7 +110,6 @@ document.addEventListener('DOMContentLoaded', () => {
       squares[gologCrossiantsIndex].classList.add('logCrossiants')
     }
   }
-
   // goObstaclesLogs starts
   function goObstaclesLogs(){
     if(logIndex < 29 && logIndex > 23){
@@ -127,15 +118,13 @@ document.addEventListener('DOMContentLoaded', () => {
       squares[logIndex].classList.remove('obstaclesLollipop')
       logIndex += 1
       squares[logIndex].classList.add('obstaclesLollipop')
-    } else {
+    }  else {
       collisionCheck = logIndex
       squares[logIndex].classList.remove('obstaclesLollipop')
       logIndex = 24
       squares[logIndex].classList.add('obstaclesLollipop')
     }
   }
-
-
   //goObstaclesTwostarts
   function goObstaclesTwo(){
     if(currentIndexRow2 < 35 && currentIndexRow2 > 29){
@@ -172,15 +161,15 @@ document.addEventListener('DOMContentLoaded', () => {
   function goObstaclesFour(){
     if(currentIndexRow4 < 53 && currentIndexRow4 > 47){
       collisionCheckRow4 = currentIndexRow4
-      squares[currentIndexRow4].classList.add('obstaclesDonut')
-      squares[currentIndexRow4].classList.remove('obstaclesDonut')
+      squares[currentIndexRow4].classList.add('obstaclesCupcake')
+      squares[currentIndexRow4].classList.remove('obstaclesCupcake')
       currentIndexRow4 += 1
-      squares[currentIndexRow4].classList.add('obstaclesDonut')
+      squares[currentIndexRow4].classList.add('obstaclesCupcake')
     } else {
       collisionCheckRow3 = currentIndexRow4
-      squares[currentIndexRow4].classList.remove('obstaclesDonut')
+      squares[currentIndexRow4].classList.remove('obstaclesCupcake')
       currentIndexRow4 = 48
-      squares[currentIndexRow4].classList.add('obstaclesDonut')
+      squares[currentIndexRow4].classList.add('obstaclesCupcake')
     }
   }
   //goObstaclesThree ends
@@ -213,11 +202,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // function hitByObjectAudio() {
-  //   audio.src = 'audio/hitByObject.wav'
-  //   audio.play()
-  // }
-
   function sarahOnPlate(){
     if(squares[currentIndex].classList.contains('home') && squares[currentIndex].classList.contains('sarahWithVeg')) {
       squares[currentIndex].classList.remove('home')
@@ -238,8 +222,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (squares[currentIndex].classList.contains('home') && !squares[currentIndex].classList.contains('sarahWithVeg')) {
       currentIndex = 59
       squares[currentIndex].classList.add('sarah')
-      // squares[currentIndex].classList.setAttribute('homeWithGem',[2])
-
+      // squares[currentIndex].classList.setAttribute('data-type',[2])
     }
   }
 
@@ -247,19 +230,36 @@ document.addEventListener('DOMContentLoaded', () => {
     newSarahPosition = squares[currentIndex].classList.add('sarah')
     return newSarahPosition
   }
-
   function gameCompleted(){
     vegCollected++
     collected.innerHTML = vegCollected
+    if(vegCollected === 1){
+      // endGame()
+    }
     if(vegCollected === 2){
       setInterval(goObstaclesLogs, 600)
       setInterval(goObstaclesTwo, 800)
       setInterval(goObstaclesThree, 1000)
     }
-    if(vegCollected === 6){
-      alert('End Game')
+    if(vegCollected === 4){
+      setInterval(goObstaclesLogs, 500)
+      setInterval(goObstaclesTwo, 800)
+      setInterval(goObstaclesThree, 700)
     }
   }
+
+  // let finalTime = +timerCompleted.HTML
+  // function endGame(){
+  //   finalTime = 120 - timeRemaining
+  //   timerCompleted.textContent = finalTime
+  //   finished.classList.add('show')
+  // }
+
+
+  // function hitByObjectAudio() {
+  //   audio.src = 'audio/hitByObject.wav'
+  //   audio.play()
+  // }
 
   // Need these Braces
 })

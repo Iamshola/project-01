@@ -12,7 +12,7 @@
  </head>
  <body>
    <h1>Sarah's Salad Bar</h1>
-   <div class="everything">
+   <div class="mainContent">
     <div class="scoreBoard">
       <h2> Instructions <br> </h2>
       <p>Let's help Sarah collect all the ingredients required for her salad and avoid all junk food on her way!</p>
@@ -20,6 +20,13 @@
       <p>Good Luck and help Sarah out!</p>
       <p> You have collected <span class="collected">0</span> out of 6</p>
       <p><span class="timer">120</span> Seconds</p>
+      <h3 class="lostLives">Lives
+      <i class="liveCountdown fas fa-heart"></i>
+      <i class="liveCountdown fas fa-heart"></i>
+      <i class="liveCountdown fas fa-heart"></i>
+      </h3>
+      <button class="start">Start</button>
+      <button class="restart">Restart</button>
     </div>
     <div class="game">
      <div class="grid">
@@ -34,7 +41,7 @@
       <div class="riskArea">8</div>
       <div class="riskArea">9</div>
       <div class="riskArea">10</div>
-      <div class="riskArea ">11</div>
+      <div class="riskArea">11</div>
       <div class="riskArea">12</div>
       <div class="riskArea">13</div>
       <div class="riskArea">14</div>
@@ -47,11 +54,11 @@
       <div class="safe">21</div>
       <div class="safe">22</div>
       <div class="safe">23</div>
-      <div class="riskArea">24</div>
+      <div class="riskArea obstaclesLollipop">24</div>
       <div class="riskArea">25</div>
-      <div class="riskArea">26</div>
+      <div class="riskArea obstaclesLollipop">26</div>
       <div class="riskArea">27</div>
-      <div class="riskArea">28</div>
+      <div class="riskArea obstaclesLollipop">28</div>
       <div class="riskArea">29</div>
       <div class="riskArea">30</div>
       <div class="riskArea">31</div>
@@ -85,22 +92,13 @@
       <div class="safe">59</div>
      </div>
     </div>
-    <div class="scoreBoard">
-     <div class="score"></div>
-     <div class="lives"><br>
-       <h3>Lives
-       <p class="lostLives"></p>
-       <p> <i class="liveCountdown fas fa-heart"></i> Obesity</p>
-       <p> <i class="liveCountdown fas fa-heart"></i> Type 2 Diabetes</p>
-       <p> <i class="liveCountdown fas fa-heart"></i> High Blood Pressure</p>
-       <p> <i class="liveCountdown fas fa-heart"></i> Joint Pains</p>
-       <p> <i class="liveCountdown fas fa-heart"></i> Tooth Decay </p>
-     </h3>
-     </div>
-     <button class="start">Start</button>
-     <button class="restart">Restart</button>
     </div>
-    </div>
+  <!-- <div class="finished">
+    <h2>Congratulations! </h2>
+    <p> <span class="timerCompleted"> 0 </span></p>
+    <div class="completedPlate"></div>
+  </div> -->
+
   <footer>
     <h4>Cartoons Sourced From:
     <a href="https://www.freepik.com/free-photos-vectors/food">Food</a>

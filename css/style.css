@@ -1,19 +1,13 @@
 * {
   box-sizing: border-box;
 }
- p{
-   font-size: 20px;
- }
-
 
 body {
-  margin: 0;
   font-size: 24px;
   background-color: #FFF3F5;
   font-family: 'Roboto Condensed', sans-serif;
   text-align: center;
-
-
+  margin: 0 100px;
 }
 h1{
   margin: 0 0 20px 0;
@@ -32,11 +26,25 @@ h4{
 font-size: 14px;
 margin-top:10px;
 }
+h3{
+  font-size: 20px;
+}
 
+p{
+  font-size: 20px;
+}
 a{
   font-size: 12px;
   color: grey;
 }
+button{
+  width: 75px;
+  height: 30px;
+  margin-left: 20px;
+  font-size: 20px;
+  font-family: 'Nanum Pen Script', cursive;
+}
+
 a, a:visited, a:hover, a:active {
   color: inherit;
 }
@@ -54,20 +62,13 @@ header {
   background-color: grey
 }
 
-button{
-  width: 75px;
-  height: 30px;
-  margin-left: 20px;
-  font-size: 20px;
-  font-family: 'Nanum Pen Script', cursive;
-}
 .scoreBoard{
   background-image: url(../img/blackBoard.jpg);
   background-repeat: no-repeat;
   width: 300px;
-  height: 400px;
-  background-color: #9C9696;
-  margin: 30px 20px;
+  height: 500px;
+  margin: 30px;
+  padding: 10px;
   color: white;
   font-family: 'Nanum Pen Script', cursive;
   border-radius: 20px;
@@ -76,9 +77,8 @@ button{
 .game {
   width: 650px;
   height: 650px;
-  margin-left: 20px;
   padding: 10px;
-  border: 0.5px solid black;
+  /* color: #FFF3F5; */
 
 }
 
@@ -93,14 +93,18 @@ button{
   width: calc(100% / 6);
   height: calc(100% / 10);
 }
-.everything{
+.mainContent{
   display: flex;
+  margin: 20px;
+
 }
 div i{
-  /* margin: 5px; */
   text-align: center;
 }
 
+/* .riskArea{
+  border-bottom: black;
+} */
 .sarah {
   background-image: url(../img/littleGirl.png);
   background-size: contain;
@@ -110,6 +114,13 @@ div i{
 
 .safe{
   background-color: #fafafa;
+}
+
+.completedPlate{
+  background-image: url(../img/plateAllVeg.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .obstaclesLollipop {
@@ -128,6 +139,13 @@ div i{
 }
 .obstaclesDonut {
   background-image: url(../img/donut.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+}
+.obstaclesCupcake {
+  background-image: url(../img/cupcake.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
