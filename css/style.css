@@ -3,7 +3,16 @@
 }
 .mainContent{
   display: flex;
-  margin-right: 30px 0 0 380px;
+  /* background-image: url(../img/marketStall.png);
+  background-size: cover;
+  background-repeat: no-repeat; */
+  /* margin-right: 30px 0 0 380px; */
+}
+
+.container{
+  /* background-image: url(../img/marketStall.png);
+  background-size: cover;
+  background-repeat: no-repeat; */
 }
 
 body {
@@ -12,6 +21,7 @@ body {
   font-family: 'Roboto Condensed', sans-serif;
   text-align: center;
   margin: 40px 100px;
+
 }
 
 h1{
@@ -31,11 +41,10 @@ h4{
 font-size: 14px;
 margin-top:10px;
 }
+
 h3{
   font-size: 20px;
 }
-
-
 p{
   font-size: 20px;
 }
@@ -50,6 +59,7 @@ button{
   margin-left: 20px;
   font-size: 20px;
   font-family: 'Nanum Pen Script', cursive;
+  background-color: #fafafa;
 }
 
 a, a:visited, a:hover, a:active {
@@ -62,11 +72,11 @@ header {
   padding: 10px 0;
 }
 .logCrossiants {
-  /* background-image: url(../img/logCrossiants.png);
+  background-image: url(../img/logCrossiants.png);
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: center; */
-  background-color: red;
+  background-position: center;
+  /* background-color: red; */
 }
 
 .scoreBoard{
@@ -88,7 +98,6 @@ header {
   margin-top: 10px;
   display: inline-block;
   /* color: #FFF3F5; */
-
 }
 
 .grid {

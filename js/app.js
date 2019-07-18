@@ -17,23 +17,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let sarah = 'sarah'
   const width = 6
+  let randomIndex = 6
+  let collisionCheckFirstRow = 0
+  let firstRowObstaclesIndex = 0
+  let secondRowObstaclesIndex = 5
+  let collisionCheckSecondRow = 0
+  let thirdRowObstaclesIndex = 23
+  let collisionCheckThirdRow = 0
+
+  let fourthRowObstaclesIndex = 36
+  let collisionCheckFourthRow = 0
+
+
   let vegIndex = 1
   let vegCollected = 0
   // let livesBoard = 5
-  let randomIndex = 6
-  let collisionCheckCrossiants = 0
-  let collisionCheck = 0
   let collisionCheckCrossiants1 = 0
-  let collisionCheckRow2 = 0
   let collisionCheckRow3 = 0
   let collisionCheckRow4 = 0
-  let sarahPosition = 54
-  let newSarahPosition = 55
+  let characterPosition = 54
+  let newCharacterPosition = 55
   let currentIndex = 55
-  let gologCrossiantsIndex = 5
-  let gologCrossiantsIndex1 = 5
-  let logIndex = 23
-  let currentIndexRow2 = 36
+
   let currentIndexRow3 = 48
   let currentIndexRow4 = 47
   let vegetable = 0
@@ -51,9 +56,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // let dataType = [1,2,3,4,5,6]
 
   function startGame(){
-    setInterval(gologCrossiants, 1000)
-    setInterval(goObstaclesLogs, 1000)
-    setInterval(goObstaclesTwo, 1000)
+    setInterval(firstRowObstacles, 700)
+    setInterval(secondRowObstacles, 1000)
+
+    setInterval(thirdRowObstacles, 700)
+    setInterval(fourthRowObstacles, 1000)
     setInterval(goObstaclesThree, 1000)
     setInterval(goObstaclesFour, 1000)
     setInterval(collision, 100)
@@ -95,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
       squares[currentIndex].classList.remove(sarah)
     }
     squares[currentIndex].classList.add(sarah)
-    sarahPosition = currentIndex
+    characterPosition = currentIndex
     sarahOnPlate()
     if(sarah === 'sarahWithVegetables'){
       (squares[currentIndex].setAttribute('data-type', sarahWithVegetables))
@@ -103,73 +110,66 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   // Move moveMyCharacter end
 
-  // allObstacles()
-
-  function gologCrossiants(){
-    if(gologCrossiantsIndex < 18 && gologCrossiantsIndex > 5){
-      collisionCheckCrossiants = gologCrossiantsIndex
-      squares[gologCrossiantsIndex].classList.add('logCrossiants')
-      squares[gologCrossiantsIndex + 1].classList.add('logCrossiants')
-      squares[gologCrossiantsIndex].classList.remove('logCrossiants')
-      squares[gologCrossiantsIndex  + 1].classList.remove('logCrossiants')
-      gologCrossiantsIndex += 1
-      squares[gologCrossiantsIndex].classList.add('logCrossiants')
-      squares[gologCrossiantsIndex + 1].classList.add('logCrossiants')
+  // MovementOfObstacles
+  function firstRowObstacles(){
+    if(firstRowObstaclesIndex < 11 && firstRowObstaclesIndex > 5){
+      collisionCheckFirstRow = firstRowObstaclesIndex
+      squares[firstRowObstaclesIndex].classList.add('logCrossiants')
+      squares[firstRowObstaclesIndex].classList.remove('logCrossiants')
+      firstRowObstaclesIndex += 1
+      squares[firstRowObstaclesIndex].classList.add('logCrossiants')
     } else {
-      collisionCheckCrossiants = gologCrossiantsIndex
-      squares[gologCrossiantsIndex].classList.remove('logCrossiants')
-      gologCrossiantsIndex = 6
-      squares[gologCrossiantsIndex].classList.add('logCrossiants')
-      squares[gologCrossiantsIndex + 1].classList.add('logCrossiants')
+      collisionCheckFirstRow = firstRowObstaclesIndex
+      squares[firstRowObstaclesIndex].classList.remove('logCrossiants')
+      firstRowObstaclesIndex = 6
+      squares[firstRowObstaclesIndex].classList.add('logCrossiants')
+
     }
   }
-  // function gologCrossiants1(){
-  //   if(gologCrossiantsIndex1 < 17 && gologCrossiantsIndex1 > 11){
-  //     collisionCheckCrossiants1 = gologCrossiantsIndex1
-  //     squares[gologCrossiantsIndex1].classList.add('logCrossiants')
-  //     squares[gologCrossiantsIndex1].classList.remove('logCrossiants')
-  //     gologCrossiantsIndex1 --
-  //     squares[gologCrossiantsIndex1].classList.add('logCrossiants')
-  //   } else {
-  //     collisionCheckCrossiants = gologCrossiantsIndex1
-  //     squares[gologCrossiantsIndex1].classList.remove('logCrossiants')
-  //     gologCrossiantsIndex1 = 12
-  //     squares[gologCrossiantsIndex1].classList.add('logCrossiants')
-  //   }
-  // }
-  // gologCrossiants1()
+  function secondRowObstacles(){
+    if(secondRowObstaclesIndex < 17 && secondRowObstaclesIndex > 11){
+      collisionCheckSecondRow = secondRowObstaclesIndex
+      squares[secondRowObstaclesIndex].classList.add('logCrossiants')
+      squares[secondRowObstaclesIndex].classList.remove('logCrossiants')
+      secondRowObstaclesIndex += 1
+      squares[secondRowObstaclesIndex].classList.add('logCrossiants')
+    } else {
+      collisionCheckSecondRow = secondRowObstaclesIndex
+      squares[secondRowObstaclesIndex].classList.remove('logCrossiants')
+      secondRowObstaclesIndex = 12
+      squares[secondRowObstaclesIndex].classList.add('logCrossiants')
 
-  // goObstaclesLogs starts
-  function goObstaclesLogs(){
-    if(logIndex < 29 && logIndex > 23){
-      collisionCheck = logIndex
-      squares[logIndex].classList.add('obstaclesLollipop')
-      squares[logIndex].classList.remove('obstaclesLollipop')
-      logIndex += 1
-      squares[logIndex].classList.add('obstaclesLollipop')
+    }
+  }
+  function thirdRowObstacles(){
+    if(thirdRowObstaclesIndex < 29 && thirdRowObstaclesIndex > 23){
+      collisionCheckThirdRow = thirdRowObstaclesIndex
+      squares[thirdRowObstaclesIndex].classList.add('obstaclesLollipop')
+      squares[thirdRowObstaclesIndex].classList.remove('obstaclesLollipop')
+      thirdRowObstaclesIndex += 1
+      squares[thirdRowObstaclesIndex].classList.add('obstaclesLollipop')
     }  else {
-      collisionCheck = logIndex
-      squares[logIndex].classList.remove('obstaclesLollipop')
-      logIndex = 24
-      squares[logIndex].classList.add('obstaclesLollipop')
+      collisionCheckThirdRow = thirdRowObstaclesIndex
+      squares[thirdRowObstaclesIndex].classList.remove('obstaclesLollipop')
+      thirdRowObstaclesIndex = 24
+      squares[thirdRowObstaclesIndex].classList.add('obstaclesLollipop')
     }
   }
-  //goObstaclesTwostarts
-  function goObstaclesTwo(){
-    if(currentIndexRow2 < 35 && currentIndexRow2 > 29){
-      collisionCheckRow2 = currentIndexRow2
-      squares[currentIndexRow2].classList.add('obstaclesMilkshake')
-      squares[currentIndexRow2].classList.remove('obstaclesMilkshake')
-      currentIndexRow2 += 1
-      squares[currentIndexRow2].classList.add('obstaclesMilkshake')
+  function fourthRowObstacles(){
+    if(fourthRowObstaclesIndex < 35 && fourthRowObstaclesIndex > 29){
+      collisionCheckFourthRow = fourthRowObstaclesIndex
+      squares[fourthRowObstaclesIndex].classList.add('obstaclesMilkshake')
+      squares[fourthRowObstaclesIndex].classList.remove('obstaclesMilkshake')
+      fourthRowObstaclesIndex += 1
+      squares[fourthRowObstaclesIndex].classList.add('obstaclesMilkshake')
     } else {
-      collisionCheckRow2 = currentIndexRow2
-      squares[currentIndexRow2].classList.remove('obstaclesMilkshake')
-      currentIndexRow2 = 30
-      squares[currentIndexRow2].classList.add('obstaclesMilkshake')
+      collisionCheckFourthRow = fourthRowObstaclesIndex
+      squares[fourthRowObstaclesIndex].classList.remove('obstaclesMilkshake')
+      fourthRowObstaclesIndex = 30
+      squares[fourthRowObstaclesIndex].classList.add('obstaclesMilkshake')
     }
   }
-  //goObstaclesTwoends
+
 
   //goObstaclesThree starts
   function goObstaclesThree(){
@@ -213,7 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function collision(){
-    if(sarahPosition === collisionCheckCrossiants || sarahPosition === collisionCheck || sarahPosition === collisionCheckRow2 || sarahPosition === collisionCheckRow3|| sarahPosition === collisionCheckRow4){
+    if(characterPosition === collisionCheckFirstRow || characterPosition === collisionCheckSecondRow || characterPosition === collisionCheckThirdRow || characterPosition === collisionCheckFourthRow || characterPosition === collisionCheckRow3|| characterPosition === collisionCheckRow4){
       squares[currentIndex].classList.remove(sarah)
       currentIndex = 56
       if(sarah === 'sarahWithVegetables'){
@@ -221,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       sarah = 'sarah'
       return squares[currentIndex].classList.add(sarah)
-    } if (vegIndex === sarahPosition){
+    } if (vegIndex === characterPosition){
       squares[currentIndex].classList.remove(sarah)
       sarah = 'sarahWithVegetables'
       squares[currentIndex].classList.remove('vegetable')
@@ -256,34 +256,31 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function sarahNewPoistion(){
-    newSarahPosition = squares[currentIndex].classList.add('sarah')
+    newCharacterPosition = squares[currentIndex].classList.add('sarah')
     vegetable++
     homeWithGem++
     sarahWithVegetables++
-    return newSarahPosition
+    return newCharacterPosition
   }
   function gameCompleted(){
     vegCollected++
     collected.innerHTML = vegCollected
-    if(vegCollected === 1){
-      // endGame()
-    }
     if(vegCollected === 2){
-      // setInterval(goObstaclesLogs, 1000)
-      // setInterval(goObstaclesTwo, 1000)
+      // setInterval(thirdRowObstacles, 1000)
+      // setInterval(fourthRowObstacles, 1000)
       // setInterval(goObstaclesThree, 1000)
     }
     if(vegCollected === 4){
-      // setInterval(goObstaclesLogs, 1000)
-      // setInterval(goObstaclesTwo, 1000)
+      // setInterval(thirdRowObstacles, 1000)
+      // setInterval(fourthRowObstacles, 1000)
       // setInterval(goObstaclesThree, 1000)
     }
   }
 
   function gamefinished(){
-    clearInterval(gologCrossiants)
-    clearInterval(goObstaclesLogs)
-    clearInterval(goObstaclesTwo)
+    clearInterval(firstRowObstacles)
+    clearInterval(thirdRowObstacles)
+    clearInterval(fourthRowObstacles)
     clearInterval(goObstaclesThree)
     clearInterval(goObstaclesFour)
     clearInterval(collision)
