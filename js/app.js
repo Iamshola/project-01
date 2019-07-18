@@ -5,7 +5,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const collected = document.querySelector('.collected')
   const timerCompleted = document.querySelector('.timerCompleted')
   const start = document.querySelector('.start')
-  // const finished = document.querySelector('finished')
+  const restart = document.querySelector('.restart')
+
+  const restartPopup = document.querySelector('popUp')
+
 
   const audio = document.createElement('audio')
   audio.src = 'audio/hitByObject.wav'
@@ -44,7 +47,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // let livesBoard = 5
   // eventListeners
   start.addEventListener('click', startGame)
-  // restart.addEventListener('click', restartGame)
+  restart.addEventListener('click', restartGame)
+
 
   function startGame(){
     setInterval(firstRowObstacles, 700)
@@ -196,6 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // audio.pause()
       currentIndex = 56
       audio.play()
+      // here will be a good place to add game over function
       if(sarah === 'sarahWithVegetables'){
         getGoals()
       }
@@ -216,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
       squares[currentIndex].classList.remove('sarahWithVegetables')
       squares[currentIndex].classList.add('homeWithGem')
       squares[currentIndex].setAttribute('data-type', homeWithGem)
-      gameCompleted()
+      gameChallenge()
       if(home === 'homeWithGem'){
         squares[currentIndex].classList.remove('sarahWithVegetables')
       }
@@ -225,7 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
       currentIndex = 57
       sarah = 'sarah'
       squares[currentIndex].classList.remove('vegetable')
-      return squares[currentIndex].classList.add('sarah')
+      squares[currentIndex].classList.add('sarah')
     } else if (squares[currentIndex].classList.contains('home') && !squares[currentIndex].classList.contains('sarahWithVegetables')) {
       squares[currentIndex].classList.remove('sarah')
       currentIndex = 59
@@ -240,10 +245,11 @@ document.addEventListener('DOMContentLoaded', () => {
     return newCharacterPosition
   }
 
-  function gameCompleted(){
+  function gameChallenge(){
     vegCollected++
     collected.innerHTML = vegCollected
     if(vegCollected === 2){
+      // restartPopup.style.display = 'none'
       // setInterval(thirdRowObstacles, 1000)
       // setInterval(fourthRowObstacles, 1000)
       // setInterval(fifthRowObstacles, 1000)
@@ -262,7 +268,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function gamefinished(){
     timeRemaining = 120
-    endGame()
+
+  }
+
+  function restartGame(){
+    clearInterval(firstRowObstacles)
+    clearInterval(secondRowObstacles)
+    clearInterval(thirdRowObstacles)
+    clearInterval(fourthRowObstacles)
+    clearInterval(fifthRowObstacles)
+    clearInterval(sixthRowObstacles)
+    clearInterval(collision)
+    clearInterval(countdown)
+    startGame()
   }
   // let finalTime = +timerCompleted.HTML
 
@@ -270,7 +288,6 @@ document.addEventListener('DOMContentLoaded', () => {
   //   finalTime = 120 - timeRemaining
   //   timerCompleted.textContent = finalTime
   // }
-
 
 
   // Need these Braces

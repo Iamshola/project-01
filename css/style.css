@@ -3,28 +3,60 @@
 }
 .mainContent{
   display: flex;
+  height: 300px;
 }
 
+footer{
+  padding-bottom: -100px;
+}
 .container{
   background-image: url(../img/marketStall.png);
   background-size: contain;
   background-repeat: no-repeat;
   width: 650px;
-  height: 650px;
-  margin: 45px 300px;
+  height: 500px;
+  margin: 0 300px 20px 300px;
 
 }
+.bottomOfStall{
+  background-image: url(../img/marketStallBottom.png);
+  height: 150px;
+  width: 700px;
+  margin: 90px 0 0 280px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+}
 
+.popUp{
+display: none;
+flex-direction: column;
+position: absolute;
+width: 240px;
+height: 200px;
+background-color: rgba(250, 250, 250, 0.9);
+top: 50%;
+left: 42%;
+font-size: 30px;
+color: black;
+justify-content: center;
+padding: 10px;
+border-radius: 20px;
+
+}
 body {
   font-size: 24px;
-  background-color: #FFF3F5;
+  background-color:  #fafafa;
   font-family: 'Roboto Condensed', sans-serif;
   text-align: center;
-  /* margin: 40px 100px; */
 }
 
 h1{
   margin: 0 0 10px 0;
+  padding: 20px;
+  color: green;
+  -webkit-text-stroke-width: 0.5px;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 h1 h4 p {
 text-align: center;
@@ -47,10 +79,6 @@ h3{
 p{
   font-size: 20px;
 }
-/* .endGame{
-  position: absolute;
-
-} */
 
 a{
   font-size: 12px;
@@ -79,29 +107,31 @@ header {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  /* background-color: red; */
 }
 
 .scoreBoard{
   background-image: url(../img/blackBoard.jpg);
   background-repeat: no-repeat;
-  width: 300px;
-  height: 530px;
-  margin: 30px;
+  width: 400px;
+  height: 450px;
+  /* margin: 50px 20px 30px 30px; */
   padding: 10px;
+  margin-top: 50px;
   color: white;
   font-family: 'Nanum Pen Script', cursive;
   border-radius: 20px;
 }
 
 .game {
-  width: 550px;
-  height: 550px;
+  width: 700px;
+  height: 450px;
   padding: 10px;
-  margin-top: 10px;
+  margin-top: 50px;
   display: inline-block;
-  border: 1.75px solid black;
   border-radius: 20px;
+  color: white;
+  border: 0.5px solid #696969;
+  font 7px;
 }
 
 .grid {
@@ -117,14 +147,6 @@ header {
 }
 div i{
   text-align: center;
-}
-
-
-.completedPlate{
-  background-image: url(../img/plateAllVeg.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
 }
 
 .obstaclesLollipop {
