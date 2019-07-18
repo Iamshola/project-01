@@ -7,8 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const start = document.querySelector('.start')
   const restart = document.querySelector('.restart')
 
-  const restartPopup = document.querySelector('popUp')
-
+  const restartPopup = document.querySelector('.popUp')
 
   const audio = document.createElement('audio')
   audio.src = 'audio/hitByObject.wav'
@@ -49,17 +48,29 @@ document.addEventListener('DOMContentLoaded', () => {
   start.addEventListener('click', startGame)
   restart.addEventListener('click', restartGame)
 
+  let firstRowID = null
+  let secondRowID  = null
+  let thirdRowID  = null
+  let fourthRowID  = null
+  let fifthRowID  = null
+  let sixthRowID = null
+  let collisionID = null
+  let countdownID = null
+  let newVegID = null
 
   function startGame(){
-    setInterval(firstRowObstacles, 700)
-    setInterval(secondRowObstacles, 1000)
-    setInterval(thirdRowObstacles, 700)
-    setInterval(fourthRowObstacles, 1000)
-    setInterval(fifthRowObstacles, 1000)
-    setInterval(sixthRowObstacles, 1000)
-    setInterval(collision, 80)
-    setInterval(countdown, 1000)
-    getGoals()
+    if(start.classList.contains('checker')){
+      start.classList.remove('checker')
+      firstRowID = setInterval(firstRowObstacles, 700)
+      secondRowID = setInterval(secondRowObstacles, 1000)
+      thirdRowID = setInterval(thirdRowObstacles, 700)
+      fourthRowID = setInterval(fourthRowObstacles, 1000)
+      fifthRowID = setInterval(fifthRowObstacles, 1000)
+      sixthRowID = setInterval(sixthRowObstacles, 1000)
+      collisionID = setInterval(collision, 80)
+      countdownID = setInterval(countdown, 1000)
+      newVegID = getGoals()
+    }
   }
 
   function countdown() {
@@ -249,6 +260,7 @@ document.addEventListener('DOMContentLoaded', () => {
     vegCollected++
     collected.innerHTML = vegCollected
     if(vegCollected === 2){
+      gamefinished()
       // restartPopup.style.display = 'none'
       // setInterval(thirdRowObstacles, 1000)
       // setInterval(fourthRowObstacles, 1000)
@@ -267,22 +279,44 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function gamefinished(){
-    timeRemaining = 120
-
+    // timeRemaining = 120
+    start.classList.add('checker')
+    restartPopup.style.display = 'flex'
+    // squares[firstRowObstaclesIndex].classList.remove('logCrossiants')
   }
 
   function restartGame(){
-    clearInterval(firstRowObstacles)
-    clearInterval(secondRowObstacles)
-    clearInterval(thirdRowObstacles)
-    clearInterval(fourthRowObstacles)
-    clearInterval(fifthRowObstacles)
-    clearInterval(sixthRowObstacles)
-    clearInterval(collision)
-    clearInterval(countdown)
-    startGame()
+    clearInterval(firstRowID)
+    squares[firstRowObstaclesIndex].classList.remove('logCrossiants')
+    clearInterval(secondRowID)
+    squares[secondRowObstaclesIndex].classList.remove('logCrossiants')
+    clearInterval(thirdRowID)
+    squares[thirdRowObstaclesIndex].classList.remove('obstaclesLollipop')
+    clearInterval(fourthRowID)
+    squares[fourthRowObstaclesIndex].classList.remove('obstaclesMilkshake')
+    clearInterval(fifthRowID)
+    squares[fifthRowObstacleIndex].classList.remove('obstaclesDonut')
+    clearInterval(sixthRowID)
+    squares[sixthRowObstacleIndex].classList.remove('obstaclesCupcake')
+    clearInterval(collisionID)
+    riskArea[randomIndex].classList.remove('vegetable')
+    clearInterval(newVegID)
+
+    riskArea[randomIndex].classList.remove('homeWithGem')
+    restartPopup.style.display = 'none'
+    
+    firstRowID = setInterval(firstRowObstacles, 700)
+    secondRowID = setInterval(secondRowObstacles, 1000)
+    thirdRowID = setInterval(thirdRowObstacles, 700)
+    fourthRowID = setInterval(fourthRowObstacles, 1000)
+    fifthRowID = setInterval(fifthRowObstacles, 1000)
+    sixthRowID = setInterval(sixthRowObstacles, 1000)
+    collisionID = setInterval(collision, 80)
+    countdownID = setInterval(countdown, 1000)
+    newVegID = getGoals()
+
+    // startGame()
   }
-  // let finalTime = +timerCompleted.HTML
 
   // function endGame(){
   //   finalTime = 120 - timeRemaining
