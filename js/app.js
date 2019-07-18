@@ -2,75 +2,62 @@ document.addEventListener('DOMContentLoaded', () => {
   const squares = document.querySelectorAll('.grid div')
   const riskArea = document.querySelectorAll('.riskArea')
   const home = document.querySelectorAll('home')
-  const scoreBoard = document.querySelector('.scoreBoard')
   const collected = document.querySelector('.collected')
   const timerCompleted = document.querySelector('.timerCompleted')
-  const lostLives = document.querySelector('lostLives')
   const start = document.querySelector('.start')
-  const restart = document.querySelector('.restart')
-  let audio = document.querySelector('audio')
+  // const finished = document.querySelector('finished')
+
+  const audio = document.createElement('audio')
+  audio.src = 'audio/hitByObject.wav'
+
   const timer = document.querySelector('.timer')
-  const gameOver = document.querySelector('#gameOver')
-  const finished = document.querySelector('.finished')
   const score = 0
   // const lives  =  document.querySelector('lives')
 
   let sarah = 'sarah'
   const width = 6
   let randomIndex = 6
+  let currentIndex = 55
   let collisionCheckFirstRow = 0
-  let firstRowObstaclesIndex = 0
-  let secondRowObstaclesIndex = 5
   let collisionCheckSecondRow = 0
-  let thirdRowObstaclesIndex = 23
   let collisionCheckThirdRow = 0
-
-  let fourthRowObstaclesIndex = 36
   let collisionCheckFourthRow = 0
-
-
+  let collisionCheckFifthRow = 0
+  let collisionCheckSixthRow = 0
+  let firstRowObstaclesIndex = 5
+  let secondRowObstaclesIndex = 11
+  let thirdRowObstaclesIndex = 23
+  let fourthRowObstaclesIndex = 29
+  let fifthRowObstacleIndex = 41
+  let sixthRowObstacleIndex = 47
   let vegIndex = 1
   let vegCollected = 0
-  // let livesBoard = 5
-  let collisionCheckCrossiants1 = 0
-  let collisionCheckRow3 = 0
-  let collisionCheckRow4 = 0
   let characterPosition = 54
   let newCharacterPosition = 55
-  let currentIndex = 55
-
-  let currentIndexRow3 = 48
-  let currentIndexRow4 = 47
+  let timeRemaining = +timer.textContent
+  let timerId = null
+  // Datatypes
   let vegetable = 0
   let sarahWithVegetables = 0
   let homeWithGem = 0
 
+  // let livesBoard = 5
   // eventListeners
   start.addEventListener('click', startGame)
   // restart.addEventListener('click', restartGame)
-  document.addEventListener('keyup', moveMyCharacter)
-
-  // datatype 1 - radish, datatype 2 - Tomato, datatype 3 - Corn
-  // datatype 4 - pumpkin, datatype 5 - broccoli, datatype 6 - mushroom
-
-  // let dataType = [1,2,3,4,5,6]
 
   function startGame(){
     setInterval(firstRowObstacles, 700)
     setInterval(secondRowObstacles, 1000)
-
     setInterval(thirdRowObstacles, 700)
     setInterval(fourthRowObstacles, 1000)
-    setInterval(goObstaclesThree, 1000)
-    setInterval(goObstaclesFour, 1000)
-    setInterval(collision, 100)
+    setInterval(fifthRowObstacles, 1000)
+    setInterval(sixthRowObstacles, 1000)
+    setInterval(collision, 80)
     setInterval(countdown, 1000)
     getGoals()
   }
 
-  // Timer Function
-  let timeRemaining = +timer.textContent
-  let timerId = null
   function countdown() {
     timeRemaining--
     timer.textContent = timeRemaining
@@ -80,8 +67,6 @@ document.addEventListener('DOMContentLoaded', () => {
       // function endGame()
     }
   }
-
-  // Move moveMyCharacter starts
   function moveMyCharacter(e) {
     squares[currentIndex].classList.remove(sarah)
     switch(e.keyCode) {
@@ -95,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if(currentIndex % width < width - 1) currentIndex += 1
         break
       case 40:
-        if(currentIndex + width < width * width) currentIndex += width
+        if(currentIndex + width < width * 10) currentIndex += width
         break
     }
     if(squares[currentIndex].classList.contains(sarah)) {
@@ -108,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
       (squares[currentIndex].setAttribute('data-type', sarahWithVegetables))
     }
   }
-  // Move moveMyCharacter end
+  document.addEventListener('keyup', moveMyCharacter)
 
   // MovementOfObstacles
   function firstRowObstacles(){
@@ -169,40 +154,34 @@ document.addEventListener('DOMContentLoaded', () => {
       squares[fourthRowObstaclesIndex].classList.add('obstaclesMilkshake')
     }
   }
-
-
-  //goObstaclesThree starts
-  function goObstaclesThree(){
-    if(currentIndexRow3 < 47 && currentIndexRow3 > 41){
-      collisionCheckRow3 = currentIndexRow3
-      squares[currentIndexRow3].classList.add('obstaclesDonut')
-      squares[currentIndexRow3].classList.remove('obstaclesDonut')
-      currentIndexRow3 += 1
-      squares[currentIndexRow3].classList.add('obstaclesDonut')
+  function fifthRowObstacles(){
+    if(fifthRowObstacleIndex < 47 && fifthRowObstacleIndex > 41){
+      collisionCheckFifthRow = fifthRowObstacleIndex
+      squares[fifthRowObstacleIndex].classList.add('obstaclesDonut')
+      squares[fifthRowObstacleIndex].classList.remove('obstaclesDonut')
+      fifthRowObstacleIndex += 1
+      squares[fifthRowObstacleIndex].classList.add('obstaclesDonut')
     } else {
-      collisionCheckRow3 = currentIndexRow3
-      squares[currentIndexRow3].classList.remove('obstaclesDonut')
-      currentIndexRow3 = 42
-      squares[currentIndexRow3].classList.add('obstaclesDonut')
+      collisionCheckFifthRow = fifthRowObstacleIndex
+      squares[fifthRowObstacleIndex].classList.remove('obstaclesDonut')
+      fifthRowObstacleIndex = 42
+      squares[fifthRowObstacleIndex].classList.add('obstaclesDonut')
     }
   }
-
-  function goObstaclesFour(){
-    if(currentIndexRow4 < 53 && currentIndexRow4 > 47){
-      collisionCheckRow4 = currentIndexRow4
-      squares[currentIndexRow4].classList.add('obstaclesCupcake')
-      squares[currentIndexRow4].classList.remove('obstaclesCupcake')
-      currentIndexRow4 += 1
-      squares[currentIndexRow4].classList.add('obstaclesCupcake')
+  function sixthRowObstacles(){
+    if(sixthRowObstacleIndex < 53 && sixthRowObstacleIndex > 47){
+      collisionCheckSixthRow = sixthRowObstacleIndex
+      squares[sixthRowObstacleIndex].classList.add('obstaclesCupcake')
+      squares[sixthRowObstacleIndex].classList.remove('obstaclesCupcake')
+      sixthRowObstacleIndex += 1
+      squares[sixthRowObstacleIndex].classList.add('obstaclesCupcake')
     } else {
-      collisionCheckRow3 = currentIndexRow4
-      squares[currentIndexRow4].classList.remove('obstaclesCupcake')
-      currentIndexRow4 = 48
-      squares[currentIndexRow4].classList.add('obstaclesCupcake')
+      collisionCheckSixthRow = sixthRowObstacleIndex
+      squares[sixthRowObstacleIndex].classList.remove('obstaclesCupcake')
+      sixthRowObstacleIndex = 48
+      squares[sixthRowObstacleIndex].classList.add('obstaclesCupcake')
     }
   }
-  //goObstaclesThree ends
-
   // MakeGoals starts
   function getGoals(){
     randomIndex = Math.floor(Math.random() * riskArea.length)
@@ -211,11 +190,12 @@ document.addEventListener('DOMContentLoaded', () => {
     riskArea[randomIndex].classList.add('vegetable')
     riskArea[randomIndex].setAttribute('data-type', vegetable)
   }
-
   function collision(){
-    if(characterPosition === collisionCheckFirstRow || characterPosition === collisionCheckSecondRow || characterPosition === collisionCheckThirdRow || characterPosition === collisionCheckFourthRow || characterPosition === collisionCheckRow3|| characterPosition === collisionCheckRow4){
+    if(characterPosition === collisionCheckFirstRow || characterPosition === collisionCheckSecondRow || characterPosition === collisionCheckThirdRow || characterPosition === collisionCheckFourthRow || characterPosition === collisionCheckFifthRow|| characterPosition === collisionCheckSixthRow){
       squares[currentIndex].classList.remove(sarah)
+      // audio.pause()
       currentIndex = 56
+      audio.play()
       if(sarah === 'sarahWithVegetables'){
         getGoals()
       }
@@ -226,11 +206,9 @@ document.addEventListener('DOMContentLoaded', () => {
       sarah = 'sarahWithVegetables'
       squares[currentIndex].classList.remove('vegetable')
       squares[currentIndex].classList.add('sarahWithVegetables')
-
-      return squares[currentIndex].setAttribute('data-type', sarahWithVegetables)
+      squares[currentIndex].setAttribute('data-type', sarahWithVegetables)
     }
   }
-
   function sarahOnPlate(){
     if(squares[currentIndex].classList.contains('home') && squares[currentIndex].classList.contains('sarahWithVegetables')) {
       squares[currentIndex].classList.remove('home')
@@ -249,12 +227,11 @@ document.addEventListener('DOMContentLoaded', () => {
       squares[currentIndex].classList.remove('vegetable')
       return squares[currentIndex].classList.add('sarah')
     } else if (squares[currentIndex].classList.contains('home') && !squares[currentIndex].classList.contains('sarahWithVegetables')) {
+      squares[currentIndex].classList.remove('sarah')
       currentIndex = 59
       squares[currentIndex].classList.add('sarah')
     }
-
   }
-
   function sarahNewPoistion(){
     newCharacterPosition = squares[currentIndex].classList.add('sarah')
     vegetable++
@@ -262,42 +239,39 @@ document.addEventListener('DOMContentLoaded', () => {
     sarahWithVegetables++
     return newCharacterPosition
   }
+
   function gameCompleted(){
     vegCollected++
     collected.innerHTML = vegCollected
     if(vegCollected === 2){
       // setInterval(thirdRowObstacles, 1000)
       // setInterval(fourthRowObstacles, 1000)
-      // setInterval(goObstaclesThree, 1000)
+      // setInterval(fifthRowObstacles, 1000)
     }
     if(vegCollected === 4){
       // setInterval(thirdRowObstacles, 1000)
       // setInterval(fourthRowObstacles, 1000)
-      // setInterval(goObstaclesThree, 1000)
+      // setInterval(fifthRowObstacles, 1000)
+    }
+    if(vegCollected === 6){
+      // setInterval(thirdRowObstacles, 1000)
+      // setInterval(fourthRowObstacles, 1000)
+      // setInterval(fifthRowObstacles, 1000)
     }
   }
 
   function gamefinished(){
-    clearInterval(firstRowObstacles)
-    clearInterval(thirdRowObstacles)
-    clearInterval(fourthRowObstacles)
-    clearInterval(goObstaclesThree)
-    clearInterval(goObstaclesFour)
-    clearInterval(collision)
-    clearInterval(countdown)
+    timeRemaining = 120
+    endGame()
   }
   // let finalTime = +timerCompleted.HTML
+
   // function endGame(){
   //   finalTime = 120 - timeRemaining
   //   timerCompleted.textContent = finalTime
-  //   finished.classList.add('show')
   // }
 
 
-  // function hitByObjectAudio() {
-  //   audio.src = 'audio/hitByObject.wav'
-  //   audio.play()
-  // }
 
   // Need these Braces
 })
