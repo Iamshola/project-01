@@ -124,14 +124,16 @@ document.addEventListener('keyup', moveMyCharacter)
 ```
 ### Wins and Blockers
 For my first solo project, I am quite proud of what I have managed to produce yet I know there's a lot more work required to make it the perfect game. I have a better understanding how to think like a developer and with more exposure and practice, I know it will make my code and workflow more efficient
-
- One win which I really like was my character ability to change depending on the veg collected which I used data-type attribute.
+One win which I really like was my character ability to change depending on the veg collected which I used data-type attribute.
 
 <img width="684" alt="Screenshot 2019-07-19 at 11 04 56" src="https://user-images.githubusercontent.com/43203736/61527748-17181480-aa15-11e9-991f-cdd88aa133c9.png">
 
-On reflection, I wish I had planned better my days and clearly outlined my objectives.
+<br> </br>
+![ezgif com-video-to-gif](https://user-images.githubusercontent.com/43203736/61530367-c35cf980-aa1b-11e9-9c30-9cf744b2b92f.gif)
 
-I wish I had more time to refactor my code and make it understandable to others reading it. From speaking to my peers and instructors, I feel it would have been suitable for me to have broken my functions into little function so they can be used in different places to prevent repeat code.
+
+On reflection, I wish I had planned better my days and clearly outlined my objectives.
+I had hoped to have more time to refactor my code and make it understandable to others reading it. From speaking to my peers and instructors, I feel it would have been suitable for me to have broken my functions into little function so they can be used in different places to prevent repeat code.
 
 
 #### Future features
