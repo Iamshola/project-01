@@ -56,8 +56,8 @@ document.addEventListener('DOMContentLoaded', () => {
   function startGame(){
     if(start.classList.contains('checker')){
       start.classList.remove('checker')
-      firstRowID = setInterval(firstRowObstacles, 1000)
-      secondRowID = setInterval(secondRowObstacles, 1000)
+      firstRowID = setInterval(firstRowObstacles, 800)
+      secondRowID = setInterval(secondRowObstacles, 900)
       thirdRowID = setInterval(thirdRowObstacles, 1000)
       fourthRowID = setInterval(fourthRowObstacles, 1000)
       fifthRowID = setInterval(fifthRowObstacles, 1000)
@@ -102,11 +102,10 @@ document.addEventListener('DOMContentLoaded', () => {
       (squares[currentIndex].setAttribute('data-type', sarahWithVegetables))
     }
   }
-
   document.addEventListener('keyup', moveMyCharacter)
   // MovementOfObstacles
   function firstRowObstacles(){
-    if(firstRowObstaclesIndex < 10 && firstRowObstaclesIndex > 5){
+    if(firstRowObstaclesIndex < 10 && firstRowObstaclesIndex > 6){
       collisionCheckFirstRow = firstRowObstaclesIndex
       squares[firstRowObstaclesIndex].classList.add('obstaclesMilkshake')
       // squares[firstRowObstaclesIndex +1].classList.add('obstaclesMilkshake')
@@ -118,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       collisionCheckFirstRow = firstRowObstaclesIndex
       squares[firstRowObstaclesIndex].classList.remove('obstaclesMilkshake')
-      firstRowObstaclesIndex = 6
+      firstRowObstaclesIndex = 7
       squares[firstRowObstaclesIndex].classList.add('obstaclesMilkshake')
       squares[firstRowObstaclesIndex].classList.remove('obstaclesMilkshake')
     }
@@ -249,7 +248,6 @@ document.addEventListener('DOMContentLoaded', () => {
     sarahWithVegetables++
     return newCharacterPosition
   }
-
   function gameChallenge(){
     vegCollected++
     collected.innerHTML = vegCollected
@@ -258,12 +256,12 @@ document.addEventListener('DOMContentLoaded', () => {
       fourthRowID = setInterval(fourthRowObstacles, 1000)
       fifthRowID = setInterval(fifthRowObstacles, 600)
     }
-    if(vegCollected === 4){
+    if(vegCollected === 3){
       thirdRowID = setInterval(thirdRowObstacles, 800)
       fourthRowID = setInterval(fourthRowObstacles, 1000)
       fifthRowID = setInterval(fifthRowObstacles, 600)
     }
-    if(vegCollected === 6){
+    if(vegCollected === 5){
       thirdRowID = setInterval(thirdRowObstacles, 800)
       fourthRowID = setInterval(fourthRowObstacles, 1000)
       fifthRowID = setInterval(fifthRowObstacles, 600)
