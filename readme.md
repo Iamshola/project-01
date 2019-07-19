@@ -1,6 +1,9 @@
-# Sarah's Veggie Mart
+![ga_cog_large_red_rgb](https://cloud.githubusercontent.com/assets/40461/8183776/469f976e-1432-11e5-8199-6ac91363302b.png)
+# Project 1: Game - Frogger
 
 Brief
+* The idea of Frogger is to guide a family of frogs across a road, and a river to their homes at the top of the screen.
+* To make things more challenging there are numerous moving obstacles that the frogs must avoid to reach their destination.
 * The game should be playable for one player.
 * The obstacles should be auto generated.
 
@@ -14,9 +17,7 @@ Technologies Used
 *	Font Awesome
 
 #### Duration
-
 7 days
-
 
 #### Overview & concept of the project
 The aim of the project was to consolidate our knowledge of what we have learnt over the past weeks. The project can be accessed through https://iamshola.github.io/project-01/
@@ -26,8 +27,9 @@ The aim of the project was to consolidate our knowledge of what we have learnt o
 
 #### Approach
 Before starting my project, I decided to use a grid as the basis of my game and added in any additional divs for my styling process. I believe a grid layout of 6 x 10 would be adequate to enable the various components of the game to be achieved. I wanted to make this a health focused game and have an element of health promotion hence the junk food obstacles and vegetable gems.
+The gems would be randomly selected based on the 'riskArea' class and using a Math.Random function.
 
-Within our brief, emphasises was made on auto generated objects and collision. Initially, I had no idea how I would do this so I pseudocoded and really broke my thought process down.
+Within our brief, there was emphasise on auto generated objects and collision. Initially, I had no idea how I would do this so I pseudocoded and really broke my thought process down.
 
 
 #### Snapshot of code
@@ -59,7 +61,8 @@ function collision(){
 ```
 
 
-This the approach that I used to generate a new character on the page.
+This is the method that I used to generate new versions of my character and to apply the new class to the plate ('lilypads').
+
 ``` js
 function sarahOnPlate(){
   if(squares[currentIndex].classList.contains('home') && squares[currentIndex].classList.contains('sarahWithVegetables')) {
@@ -126,10 +129,10 @@ For my first solo project, I am quite proud of what I have managed to produce ye
 
 <img width="684" alt="Screenshot 2019-07-19 at 11 04 56" src="https://user-images.githubusercontent.com/43203736/61527748-17181480-aa15-11e9-991f-cdd88aa133c9.png">
 
-
-
+On reflection, I wish I had planned better my days and clearly outlined my objectives.
 
 I wish I had more time to refactor my code and make it understandable to others reading it. From speaking to my peers and instructors, I feel it would have been suitable for me to have broken my functions into little function so they can be used in different places to prevent repeat code.
+
 
 #### Future features
 Prior to selecting this game, I knew it would be a challenge so I decided to ensure that I had a basic MVP and would go back and make any amendments required. I would have loved to have a working log function, the ability to record high score and include multiple levels.
