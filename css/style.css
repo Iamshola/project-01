@@ -114,7 +114,7 @@ button{
   margin-top: 50px;
   display: inline-block;
   border-radius: 20px;
-  color: white;
+  color: rgb(250,250,250, 0); 
   border: 0.45px solid #696969;
   font 7px;
 }
@@ -287,4 +287,5 @@ button{
    background-repeat: no-repeat;
    background-position: center; */
    background-color: #006400;
+   color: rgb(0,100,0,0);
 }

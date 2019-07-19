@@ -21,17 +21,118 @@ Technologies Used
 #### Overview & concept of the project
 The aim of the project was to consolidate our knowledge of what we have learnt over the past weeks. The project can be accessed through https://iamshola.github.io/project-01/
 
+![Screenshot 2019-07-19 at 10 43 21](https://user-images.githubusercontent.com/43203736/61526285-0e720f00-aa12-11e9-9f68-b0c19e194119.png)
+
+
 #### Approach
-Before starting my project, I decided to use a grid as the basis of my game and added in any additional divs for my styling process. I believe a grid layout of 6 x 10 would be adequate to enable the various components of the game to be achieved. 
+Before starting my project, I decided to use a grid as the basis of my game and added in any additional divs for my styling process. I believe a grid layout of 6 x 10 would be adequate to enable the various components of the game to be achieved. I wanted to make this a health focused game and have an element of health promotion hence the junk food obstacles and vegetable gems.
+
+Within our brief, emphasises was made on auto generated objects and collision. Initially, I had no idea how I would do this so I pseudocoded and really broke my thought process down.
+
+
+#### Snapshot of code
+This is the approach that I decided to use in order to detect collision. Each of the obstacles would be assigned an index value which would be compared against the characters position. Once collision is detected, the characters would be placed back into the 'safe zone'.
+
+``` js
+function collision(){
+  if(characterPosition === collisionCheckFirstRow ||
+    characterPosition === collisionCheckSecondRow || characterPosition === collisionCheckThirdRow
+    || characterPosition === collisionCheckFourthRow ||
+    characterPosition === collisionCheckFifthRow||
+     characterPosition === collisionCheckSixthRow){
+    squares[currentIndex].classList.remove(sarah)
+    currentIndex = 56
+    audio.play()
+    if(sarah === 'sarahWithVegetables'){
+      getGoals()
+    }
+    sarah = 'sarah'
+    return squares[currentIndex].classList.add(sarah)
+  } if (vegIndex === characterPosition){
+    squares[currentIndex].classList.remove(sarah)
+    sarah = 'sarahWithVegetables'
+    squares[currentIndex].classList.remove('vegetable')
+    squares[currentIndex].classList.add('sarahWithVegetables')
+    squares[currentIndex].setAttribute('data-type', sarahWithVegetables)
+  }
+}
+```
+
+
+This the approach that I used to generate a new character on the page.
+``` js
+function sarahOnPlate(){
+  if(squares[currentIndex].classList.contains('home') && squares[currentIndex].classList.contains('sarahWithVegetables')) {
+    squares[currentIndex].classList.remove('home')
+    squares[currentIndex].classList.remove('vegetable')
+    squares[currentIndex].classList.remove('sarahWithVegetables')
+    squares[currentIndex].classList.add('homeWithGem')
+    squares[currentIndex].setAttribute('data-type', homeWithGem)
+    gameChallenge()
+    if(home === 'homeWithGem'){
+      squares[currentIndex].classList.remove('sarahWithVegetables')
+    }
+    sarahNewPoistion()
+    getGoals()
+    currentIndex = 57
+    sarah = 'sarah'
+    squares[currentIndex].classList.remove('vegetable')
+    squares[currentIndex].classList.add('sarah')
+  } else if (squares[currentIndex].classList.contains('home') && !squares[currentIndex].classList.contains('sarahWithVegetables')) {
+    squares[currentIndex].classList.remove('sarah')
+    currentIndex = 59
+    squares[currentIndex].classList.add('sarah')
+  }
+}
+
+```
+
+This was the approach used to navigate my character around the game board
+
+``` js
+function moveMyCharacter(e) {
+  squares[currentIndex].classList.remove(sarah)
+  switch(e.keyCode) {
+    case 37:
+      if(currentIndex % width !== 0) currentIndex -= 1
+      break
+    case 38:
+      if(currentIndex - width >= 0) currentIndex -= width
+      break
+    case 39:
+      if(currentIndex % width < width - 1) currentIndex += 1
+      break
+    case 40:
+      if(currentIndex + width < width * 10) currentIndex += width
+      break
+  }
+  if(squares[currentIndex].classList.contains(sarah)) {
+    squares[currentIndex].classList.remove(sarah)
+  }
+  squares[currentIndex].classList.add(sarah)
+  characterPosition = currentIndex
+  sarahOnPlate()
+  if(sarah === 'sarahWithVegetables'){
+    (squares[currentIndex].setAttribute('data-type', sarahWithVegetables))
+  }
+}
+
+document.addEventListener('keyup', moveMyCharacter)
+```
+### Wins and Blockers
+For my first solo project, I am quite proud of what I have managed to produce yet I know there's a lot more work required to make it the perfect game. I have a better understanding how to think like a developer and with more exposure and practice, I know it will make my code and workflow more efficient
+
+ One win which I really like was my character ability to change depending on the veg collected which I used data-type attribute.
+
+<img width="684" alt="Screenshot 2019-07-19 at 11 04 56" src="https://user-images.githubusercontent.com/43203736/61527748-17181480-aa15-11e9-991f-cdd88aa133c9.png">
 
 
 
-○ Link to your project
-○ Brief
-○ Overview & concept of the project
-○ Technologies used
-○ Approach taken - Thought process & methods of producing it
-○ Snippets of your code and screenshots of your project
-○ Wins and Blockers
-○ Future features
-○ What you have learned (tech & soft skills)
+
+I wish I had more time to refactor my code and make it understandable to others reading it. From speaking to my peers and instructors, I feel it would have been suitable for me to have broken my functions into little function so they can be used in different places to prevent repeat code.
+
+#### Future features
+Prior to selecting this game, I knew it would be a challenge so I decided to ensure that I had a basic MVP and would go back and make any amendments required. I would have loved to have a working log function, the ability to record high score and include multiple levels.
+
+#### What you have learned
+I have learned the best ways to understand concepts is through practice. I feel this week has made more comfortable but not perfect with JavaScript particularly.

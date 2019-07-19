@@ -42,7 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // eventListeners
   start.addEventListener('click', startGame)
-  restart.addEventListener('click', restartGame)
 
   let firstRowID = null
   let secondRowID  = null
@@ -56,10 +55,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function startGame(){
     if(start.classList.contains('checker')){
-
       start.classList.remove('checker')
       firstRowID = setInterval(firstRowObstacles, 1000)
-      setTimeout(fifthRowObstacles, 200)
       secondRowID = setInterval(secondRowObstacles, 1000)
       thirdRowID = setInterval(thirdRowObstacles, 1000)
       fourthRowID = setInterval(fourthRowObstacles, 1000)
@@ -69,14 +66,6 @@ document.addEventListener('DOMContentLoaded', () => {
       countdownID = setInterval(countdown, 1000)
       newVegID = getGoals()
     }
-    setInterval(() => {
-      traffic()
-      traffic()
-      traffic()
-      traffic()
-      traffic()
-      traffic()
-    }, 700)
   }
 
   function countdown() {
@@ -84,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
     timer.textContent = timeRemaining
     if(timeRemaining === 0) {
       clearInterval(timerId)
-      gamefinished()
+      // gamefinished()
     }
   }
   function moveMyCharacter(e) {
@@ -113,6 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
       (squares[currentIndex].setAttribute('data-type', sarahWithVegetables))
     }
   }
+
   document.addEventListener('keyup', moveMyCharacter)
   // MovementOfObstacles
   function firstRowObstacles(){
@@ -155,14 +145,12 @@ document.addEventListener('DOMContentLoaded', () => {
       squares[thirdRowObstaclesIndex].classList.remove('obstaclesLollipop')
       thirdRowObstaclesIndex += 1
       squares[thirdRowObstaclesIndex].classList.add('obstaclesLollipop')
-
     } else {
       collisionCheckThirdRow = thirdRowObstaclesIndex
       squares[thirdRowObstaclesIndex].classList.remove('obstaclesLollipop')
       thirdRowObstaclesIndex = 24
       squares[thirdRowObstaclesIndex].classList.add('obstaclesLollipop')
     }
-    console.log('from row three' + thirdRowObstaclesIndex)
   }
   function fourthRowObstacles(){
     if(fourthRowObstaclesIndex < 35 && fourthRowObstaclesIndex > 29){
@@ -262,14 +250,6 @@ document.addEventListener('DOMContentLoaded', () => {
     return newCharacterPosition
   }
 
-  function traffic(){
-    firstRowObstacles()
-    secondRowObstacles()
-    thirdRowObstacles()
-    fourthRowObstacles()
-    fifthRowObstacles()
-    sixthRowObstacles()
-  }
   function gameChallenge(){
     vegCollected++
     collected.innerHTML = vegCollected
@@ -289,6 +269,17 @@ document.addEventListener('DOMContentLoaded', () => {
       fifthRowID = setInterval(fifthRowObstacles, 600)
       gamefinished()
     }
+  }
+  function gamefinished(){
+    // timeRemaining = 120
+    alert('You have collected ' + vegCollected + ' out of 6')
+
+    start.classList.add('checker')
+    if (window.confirm('Do you really want to leave?')) {
+      window.open('index.html', 'Thanks for Visiting!')
+    }
+    startGame()
+    // restartPopup.style.display = 'flex'
   }
   // Need these Braces
 })
