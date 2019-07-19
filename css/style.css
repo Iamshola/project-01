@@ -6,9 +6,6 @@
   height: 300px;
 }
 
-footer{
-  padding-bottom: -100px;
-}
 .container{
   background-image: url(../img/marketStall.png);
   background-size: contain;
@@ -55,7 +52,7 @@ body {
 h1{
   margin: 0 0 10px 0;
   padding: 20px;
-  color: #D3D3D3;
+  color: green;
   -webkit-text-stroke-width: 0.5px;
   font-family: 'Roboto Condensed', sans-serif;
 }
@@ -81,10 +78,6 @@ p{
   font-size: 20px;
 }
 
-a{
-  font-size: 12px;
-  color: grey;
-}
 button{
   width: 75px;
   height: 30px;
@@ -93,36 +86,27 @@ button{
   font-family: 'Nanum Pen Script', cursive;
   background-color: #fafafa;
 }
-
-a, a:visited, a:hover, a:active {
-  color: inherit;
-}
-
-header {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 0;
-}
 .logCrossiants {
   background-image: url(../img/logCrossiants.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  transition-timing-function: ease;
 }
-
 .scoreBoard{
   background-image: url(../img/blackBoard.jpg);
   background-repeat: no-repeat;
-  width: 400px;
+  width: 250px;
   height: 450px;
-  /* margin: 50px 20px 30px 30px; */
+  position: absolute;
+  left: 70%;
+  top:15%;
   padding: 10px;
   margin-top: 50px;
   color: white;
   font-family: 'Nanum Pen Script', cursive;
   border-radius: 20px;
 }
-
 .game {
   width: 700px;
   height: 450px;
@@ -131,25 +115,19 @@ header {
   display: inline-block;
   border-radius: 20px;
   color: white;
-  border: 0.5px solid #696969;
+  border: 0.45px solid #696969;
   font 7px;
 }
-
 .grid {
   width: 100%;
   height: 100%;
   display: flex;
   flex-wrap: wrap;
 }
-
 .grid div {
   width: calc(100% / 6);
   height: calc(100% / 10);
 }
-div i{
-  text-align: center;
-}
-
 .obstaclesLollipop {
   background-image: url(../img/lollipop.png);
   background-size: contain;
@@ -214,7 +192,6 @@ div i{
   background-repeat: no-repeat;
   background-position: center;
 }
-
 .vegetable[data-type='0']{
    background-image: url(../img/radish.png);
    background-size: contain;
@@ -251,15 +228,13 @@ div i{
    background-repeat: no-repeat;
    background-position: center;
  }
-
- .home{
+.home{
    background-image: url(../img/plate.png);
    background-size: contain;
    background-repeat: no-repeat;
    background-position: center;
 
  }
-
 .homeWithGem[data-type='0'] {
    background-image: url(../img/plate-radish.png);
    background-size: contain;
@@ -295,6 +270,7 @@ div i{
    background-size: contain;
    background-repeat: no-repeat;
    background-position: center;
+   position: absolute;
  }
 
 
@@ -306,5 +282,9 @@ div i{
  }
 
  .safe{
-   background-color: #fafafa;
- }
+   /* background-image: url(../img/grass.jpg);
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-position: center; */
+   background-color: #006400;
+}
