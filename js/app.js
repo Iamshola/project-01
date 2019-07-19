@@ -56,8 +56,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function startGame(){
     if(start.classList.contains('checker')){
+
       start.classList.remove('checker')
       firstRowID = setInterval(firstRowObstacles, 1000)
+      setTimeout(fifthRowObstacles, 200)
       secondRowID = setInterval(secondRowObstacles, 1000)
       thirdRowID = setInterval(thirdRowObstacles, 1000)
       fourthRowID = setInterval(fourthRowObstacles, 1000)
@@ -67,7 +69,16 @@ document.addEventListener('DOMContentLoaded', () => {
       countdownID = setInterval(countdown, 1000)
       newVegID = getGoals()
     }
+    setInterval(() => {
+      traffic()
+      traffic()
+      traffic()
+      traffic()
+      traffic()
+      traffic()
+    }, 700)
   }
+
   function countdown() {
     timeRemaining--
     timer.textContent = timeRemaining
@@ -103,7 +114,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
   document.addEventListener('keyup', moveMyCharacter)
-
   // MovementOfObstacles
   function firstRowObstacles(){
     if(firstRowObstaclesIndex < 10 && firstRowObstaclesIndex > 5){
@@ -220,7 +230,6 @@ document.addEventListener('DOMContentLoaded', () => {
       squares[currentIndex].classList.add('sarahWithVegetables')
       squares[currentIndex].setAttribute('data-type', sarahWithVegetables)
     }
-
   }
   function sarahOnPlate(){
     if(squares[currentIndex].classList.contains('home') && squares[currentIndex].classList.contains('sarahWithVegetables')) {
@@ -252,6 +261,15 @@ document.addEventListener('DOMContentLoaded', () => {
     sarahWithVegetables++
     return newCharacterPosition
   }
+
+  function traffic(){
+    firstRowObstacles()
+    secondRowObstacles()
+    thirdRowObstacles()
+    fourthRowObstacles()
+    fifthRowObstacles()
+    sixthRowObstacles()
+  }
   function gameChallenge(){
     vegCollected++
     collected.innerHTML = vegCollected
@@ -271,48 +289,6 @@ document.addEventListener('DOMContentLoaded', () => {
       fifthRowID = setInterval(fifthRowObstacles, 600)
       gamefinished()
     }
-  }
-
-  function gamefinished(){
-    // timeRemaining = 120
-    alert('You have collected ' + vegCollected + ' out of 6')
-
-    start.classList.add('checker')
-    if (window.confirm('Do you really want to leave?')) {
-      window.open('index.html', 'Thanks for Visiting!')
-    }
-
-
-    // function confirmRefresh() {
-    //   var okToRefresh = confirm("Do you really want to refresh the page?");
-    //   if (okToRefresh)
-    //   {
-    //     setTimeout('location.reload(true);',1500)
-    //   }
-    // }
-    startGame()
-    // restartPopup.style.display = 'flex'
-  }
-  function restartGame(){
-    // clearInterval(firstRowID)
-    // squares[firstRowObstaclesIndex].classList.remove('obstaclesMilkshake')
-    // clearInterval(secondRowID)
-    // squares[firstRowObstaclesIndex].classList.remove('obstaclesMilkshake')
-    // clearInterval(thirdRowID)
-    // squares[thirdRowObstaclesIndex].classList.remove('obstaclesLollipop')
-    // clearInterval(fourthRowID)
-    // squares[fourthRowObstaclesIndex].classList.remove('obstaclesMilkshake')
-    // clearInterval(fifthRowID)
-    // squares[fifthRowObstacleIndex].classList.remove('obstaclesDonut')
-    // clearInterval(sixthRowID)
-    // squares[sixthRowObstacleIndex].classList.remove('obstaclesCupcake')
-    // clearInterval(collisionID)
-    // riskArea[randomIndex].classList.remove('vegetable')
-    // // squares[currentIndex].classList.remove('sarahWithVegetables')
-    // // squares[currentIndex].classList.remove('homeWithGem')
-    // clearInterval(newVegID)
-    // timeRemaining = 120
-    // restartPopup.style.display = 'none'
   }
   // Need these Braces
 })
