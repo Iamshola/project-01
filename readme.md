@@ -60,7 +60,6 @@ function collision(){
 }
 ```
 
-
 This is the method that I used to generate new versions of my character and to apply the new class to the plate ('lilypads').
 
 ``` js
@@ -90,7 +89,7 @@ function sarahOnPlate(){
 
 ```
 
-This was the approach used to navigate my character around the game board
+This was my method used to navigate my character around the game board
 
 ``` js
 function moveMyCharacter(e) {
@@ -140,4 +139,63 @@ I had hoped to have more time to refactor my code and make it understandable to 
 Prior to selecting this game, I knew it would be a challenge so I decided to ensure that I had a basic MVP and would go back and make any amendments required. I would have loved to have a working log function, the ability to record high score and include multiple levels.
 
 #### What you have learned
-I have learned the best ways to understand concepts is through practice. I feel this week has made more comfortable but not perfect with JavaScript particularly.
+I have learned the best ways to understand concepts is through practice. I believe I have a good understanding of the theory but will definitely need more practice to understand the best approach to complete projects in future.  I feel this week has made more comfortable but not perfect with JavaScript particularly.
+
+### Course Curriculum
+  Details of my training and links to more projects whlist at General Assembly -  12 Week Immersive.
+
+> **Week 1-3 | Module One - Fundamentals**
+
+  - HTML5
+  - CSS3
+  - Sass
+  - JavaScript
+
+
+> **Week 4**
+
+  Project 1 : Frogger  | [GitHub](https://github.com/Iamshola/project-01) | [GH-Pages](https://iamshola.github.io/project-01/)
+
+>**Week 5 | Module Two - React**
+
+  - React.js
+  - Routing
+  - RESTFUL API
+  - Third-party APIs
+
+>**Week 6**
+
+  Project 2 : CocktailBored  | [GitHub](https://github.com/Iamshola/Project3) | [GH-Pages](https://iamshola.github.io/Project-2/#/)
+
+>**Week 7-8 | Module Three - Node and Express**
+
+  - RESTFUL Routing
+  - Node.js
+  - Express
+  - Token Authentication & Session Authentication
+  - API Creation
+  - Mocha and Chai
+
+>**Week 9**
+
+  Project 3 : Date-a-base | [GitHub](https://github.com/Iamshola/Project3) | [GH-Pages](https://iamshola.github.io/Project-2/#/)
+
+>**Week 10-11 | Module Four - Python and Django**
+
+  - Python
+  - SQL
+  - Django
+  - Token Authentication
+
+>**Week 12**
+
+  Project 4 : Space | [GitHub](https://github.com/Iamshola/project-04) | [Herouku](https://date-a-base-aos.herokuapp.com/#/)
+
+
+  Contact:
+
+  Adesola Oni-Shogbonyo
+
+  Email : s.oni-shogbonyo@hotmail.co.uk
+
+  Portfolio | [Linkedin](https://www.linkedin.com/in/adesola-oni-shogbonyo/) | [GitHub](https://github.com/Iamshola)
