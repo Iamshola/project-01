@@ -11,7 +11,7 @@
 ### Languages and Technologies Used:
 * HTML5 with HTML5 audio
 *	CSS3
-*	JavaScript (ES6)
+*	JavaScript
 *	Git
 *	GitHub
 *	Google Fonts
@@ -20,10 +20,11 @@
 #### Timeframe
 7 days
 
-#### Overview & concept of the project
-The aim of the project was to consolidate our knowledge of what we have learnt over the past weeks. The project can be accessed through https://iamshola.github.io/project-01/
 
-#### Approach Taken:
+### Approach Taken:
+
+#### Overview & concept of the project
+The aim of the project was to consolidate our knowledge of what we have learnt over the past weeks. The project can be accessed [Here](https://iamshola.github.io/project-01/)
 
 Before starting my project, I decided to use a grid as the basis of my game and added in any additional divs for my styling process. I believe a grid layout of 6 x 10 would be adequate to enable the various components of the game to be achieved. I wanted to make this a health focused game and have an element of health promotion hence the junk food obstacles and vegetable gems.
 The gems would be randomly selected based on the 'riskArea' class and using a Math.Random function.
